@@ -1,0 +1,54 @@
+import {
+  DashboardRounded,
+  InputRounded,
+  TitleRounded,
+  StarRounded,
+  TableChartRounded
+} from '@material-ui/icons'
+建立path 列表名稱 icon data
+export default [
+  {
+    to: '/',
+    label: 'Dashboard',
+    icon: DashboardRounded
+  },
+  {
+    label: 'Forms',
+    icon: InputRounded,
+    multiple: true,
+    name: 'forms',
+    options: [
+      {
+        to: 'forms/regular-form',
+        label: 'Regular Form',
+        title: 'Regular Form',
+        icon: StarRounded
+      },
+      {
+        to: 'forms/formik-form',
+        label: 'Formik Form',
+        title: 'Formik Form',
+        icon: StarRounded
+      }
+    ]
+  },
+  {
+    label: 'Headings',
+    icon: TitleRounded,
+    multiple: true, //是否多選單
+    name: 'headings',
+    options: [
+      {
+        to: 'headings',
+        label: 'H1',
+        title: 'H1',
+        icon: StarRounded
+      }
+    ]
+  },
+  {
+    to: 'tables/simple-table',
+    label: 'Tables',
+    icon: TableChartRounded
+  }
+]
