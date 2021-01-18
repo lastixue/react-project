@@ -9,46 +9,24 @@ import {
 export default [
   {
     to: '/',
-    label: 'Dashboard',
+    label: '手動操作',
     icon: DashboardRounded
   },
   {
-    label: 'Forms',
+    to: '/',
+    label: '各項數據',
     icon: InputRounded,
-    multiple: true,
     name: 'forms',
-    options: [
-      {
-        to: 'forms/regular-form',
-        label: 'Regular Form',
-        title: 'Regular Form',
-        icon: StarRounded
-      },
-      {
-        to: 'forms/formik-form',
-        label: 'Formik Form',
-        title: 'Formik Form',
-        icon: StarRounded
-      }
-    ]
   },
   {
-    label: 'Headings',
+    to: '/',
+    label: '自動操作',
     icon: TitleRounded,
-    multiple: true, //是否多選單
     name: 'headings',
-    options: [
-      {
-        to: 'headings',
-        label: 'H1',
-        title: 'H1',
-        icon: StarRounded
-      }
-    ]
   },
   {
-    to: 'tables/simple-table',
-    label: 'Tables',
+    to: '/',
+    label: '縮時錄影',
     icon: TableChartRounded
   }
 ]

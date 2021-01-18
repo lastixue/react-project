@@ -7,62 +7,23 @@ import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
-import MuiListItem from "@material-ui/core/ListItem";
-// import ListItem from '@material-ui/core/ListItem';
+// import MuiListItem from "@material-ui/core/ListItem";
+import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';//整合icon 與 listitemcontext 為 data.js
 import Toolbar from '@material-ui/core/Toolbar';
-import { makeStyles,withStyles} from '@material-ui/core/styles';
-
-const drawerWidth = 240;
-
-const useStyles = makeStyles((theme) => ({
- 
-  drawer: {
-    [theme.breakpoints.up('sm')]: {
-      minWidth: drawerWidth,
-      flexShrink: 0,
-    },
-  },
-  appBar: {
-    backgroundColor:'#fefefe',
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
-    },
-
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-    color:'#303030',
-    [theme.breakpoints.up('sm')]: {
-      display: 'none',
-    },
-  },
-  // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
-
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  listWrap: {
-    color:"#789730",
-    "&$.selected": {
-      borderLeft: "10px solid #789730"
-    }
-  }
-}));
-const ListItem = withStyles({
-  root: {
-    "&$selected": {
-      borderLeft: "10px solid pink"
-    }
-  },
-  selected: {}
-})(MuiListItem);
+import {useStyles} from './SideDrawer.style'
+// const ListItem = withStyles({
+//   root: {
+//     "&$selected": {
+//       borderLeft: '10px solid pink'
+//     }
+//   },
+//   selected: {}
+// })(MuiListItem);
 function ResponsiveDrawer() {
   const classes = useStyles();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -77,15 +38,16 @@ function ResponsiveDrawer() {
   const drawer = (
     <div>
       <div className={classes.toolbar} />
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+      <List >
+        {['各項數據', '自動操作', '手動操作', '縮時錄影'].map((text, index) => (
           <ListItem 
+            
             button key={text}
             // selected={selectedIndex}
             // onClick={event => handleListItemClick(event, 0)}
           >
-            <ListItemIcon className={classes.ListItem}>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
+            <ListItemIcon className={classes.margin}>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemText className={classes.center} primary={text} />
           </ListItem>
         ))}
       </List>
