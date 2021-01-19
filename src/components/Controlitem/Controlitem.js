@@ -1,4 +1,4 @@
-import React, { useState,useReducer  } from 'react'
+import React, { useState } from 'react'
 import {
     Switch,
     FormControlLabel,//設置label之標籤
@@ -7,7 +7,7 @@ import {
     TextField,
     Button
   } from "@material-ui/core";
-  import {useStyles} from './Controlitem.style';
+import {useStyles} from './Controlitem.style';
 function Controlitem({tname}){
     const classes = useStyles();
     const[auto,setAuto]=useState(false);//設置開關狀態

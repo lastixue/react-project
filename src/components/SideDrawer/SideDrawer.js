@@ -1,57 +1,41 @@
-import React, { useState } from 'react'
-// import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
-// import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
-// import MuiListItem from "@material-ui/core/ListItem";
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';//整合icon 與 listitemcontext 為 data.js
 import Toolbar from '@material-ui/core/Toolbar';
-import {useStyles} from './SideDrawer.style'
-// const ListItem = withStyles({
-//   root: {
-//     "&$selected": {
-//       borderLeft: '10px solid pink'
-//     }
-//   },
-//   selected: {}
-// })(MuiListItem);
+import { Link } from 'react-router-dom';
+import {useStyles} from './SideDrawer.style';
+import {stockData} from './Data';
+//建立path 列表名稱 icon data
+//折衷方式不使用map叫資料 最後手段
 function ResponsiveDrawer() {
   const classes = useStyles();
   const [mobileOpen, setMobileOpen] = useState(false);
-  // const [selectedIndex, setSelectedIndex] = React.useState(1);
-
-  // const handleListItemClick = (event, index) => {
-  //   setSelectedIndex(index+1);
-  // };
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+  //[{ text: '各項數據', url: '/', icon: AssignmentOutlinedIcon},{ text: '自動操作', url: '/inbox', icon: InvertColorsIcon},{ text: '手動操作', url: '/', icon: BuildIcon},{ text: '縮時錄影', url: '/inbox', icon: CameraAltIcon}]
   const drawer = (
-    <div>
-      <div className={classes.toolbar} />
-      <List >
-        {['各項數據', '自動操作', '手動操作', '縮時錄影'].map((text, index) => (
-          <ListItem 
-            
-            button key={text}
-            // selected={selectedIndex}
-            // onClick={event => handleListItemClick(event, 0)}
-          >
-            <ListItemIcon className={classes.margin}>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText className={classes.center} primary={text} />
+    <div className={classes.toolbar}>
+    <List className={classes.marginT}>
+    {stockData.map((item, index) => (
+      // <Link to={item.to}>  //component={Link} to={item.to}
+          <ListItem component={Link} to={item.to} className={classes.marginT}button key={item.label}>
+            <ListItemIcon className={classes.marginl}>{<item.icon/>}</ListItemIcon>
+            <ListItemText className={classes.center} primary={item.label} />
           </ListItem>
-        ))}
-      </List>
-    </div>
+    //  </Link>
+     ))}
+  </List>
+  </div>
+
   );
   return (
     <div className={classes.root}>
@@ -105,13 +89,5 @@ function ResponsiveDrawer() {
     </div>
   );
 }
-
-// ResponsiveDrawer.propTypes = {
-//   /**
-//    * Injected by the documentation to work in an iframe.
-//    * You won't need it on your project.
-//    */
-//   window: PropTypes.func,
-// };
 
 export default ResponsiveDrawer;
