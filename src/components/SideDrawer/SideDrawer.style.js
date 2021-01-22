@@ -2,17 +2,17 @@ import { makeStyles} from '@material-ui/core/styles';
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme) => ({
- 
+export const useStyles = makeStyles((theme) => ({
+ //material-ui api breakpoints : 判斷尺寸制定樣式
   drawer: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       minWidth: drawerWidth,
       flexShrink: 0
     },
   },
   appBar: {
     backgroundColor:'#fefefe',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth
     },
@@ -21,25 +21,20 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
     color:'#303030',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       display: 'none',
     },
   },
-  // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
 
   drawerPaper: {
     width: drawerWidth,
   },
-  listWrap: {
-    color:"#789730",
-    "&$.selected": {
-      borderLeft: "10px solid #789730"
-    }
+  selected:{
+    borderRight:'5px solid #B3C6AC',
   },
   center:{
     textAlign:'center',
-
     marginRight:theme.spacing(6)
   },
   marginl:{
@@ -49,4 +44,3 @@ const useStyles = makeStyles((theme) => ({
     marginTop:theme.spacing(4)
   }
 }));
-export {useStyles};

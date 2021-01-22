@@ -15,6 +15,7 @@ function Controlitem({tname}){
     if(val[0]>val[1]){
       return;
     }
+    console.log('render');
     const date = new Date(+new Date() + 8 * 3600 * 1000); //加入相差的8小時
     const currentMonth = date.toISOString().substr(0, 16);//toISOString()會有時差問題
   //   const [formInput, setFormInput] = useReducer(
@@ -67,7 +68,7 @@ function Controlitem({tname}){
        valueLabelDisplay="auto"
        aria-labelledby="range-slider"
         // aria-labelledby="discrete-slider"
-        // step={10}
+        step={10}
         // marks
       />
       </div>

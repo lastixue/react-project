@@ -1,16 +1,15 @@
 //Controlitem 樣式
 import { makeStyles} from '@material-ui/core/styles';
 import LightGreen from '@material-ui/core/colors/LightGreen';
-const LightGreens = LightGreen[100];
  const useStyles = makeStyles((theme)=>({
     switchBase: {
         color: theme.palette.grey[500],
         "&$checked": {
           color:LightGreen[300],
-          borderColor:LightGreens,
+          borderColor:LightGreen[100],
           "& + $track": {
             opacity: 1,
-            backgroundColor:LightGreens
+            backgroundColor:LightGreen[100]
             
         },    
         "&.Mui-disabled + $track": {
@@ -37,14 +36,14 @@ const LightGreens = LightGreen[100];
       checked: {
       },
       Typography:{
-        margin: `${theme.spacing(0.9)}px ${theme.spacing(2)}px`
+        margin: theme.spacing(0.9,2)
       },//theme.spacing 為defaut theme 預設間距 8px 所以theme.spacing(2)=8*2 
       slider:{
-        margin: `${theme.spacing(0.9)}px ${theme.spacing(2)}px`
+        margin:theme.spacing(0.9,2)
       },
       textField:{
         display:'inline-block',
-        margin: `${theme.spacing(5)}px ${theme.spacing(2)}px`
+        margin: theme.spacing(5,2)
       },
       button:{
         background: LightGreen[300],

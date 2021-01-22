@@ -1,37 +1,56 @@
 import React, { useState } from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import MenuIcon from '@material-ui/icons/Menu';//整合icon 與 listitemcontext 為 data.js
-import Toolbar from '@material-ui/core/Toolbar';
+import {
+    AppBar,
+    CssBaseline,
+    Drawer,Hidden,
+    IconButton,
+    List,
+    ListItem,
+    ListItemText,
+    ListItemIcon,
+    Collapse,
+    Toolbar
+  } from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
+import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
 import {useStyles} from './SideDrawer.style';
-import {stockData} from './Data';
-//建立path 列表名稱 icon data
-//折衷方式不使用map叫資料 最後手段
+import {NavData} from './NavData';
+
 function ResponsiveDrawer() {
   const classes = useStyles();
+  const [selectedIndex, setSelectedIndex] = useState('');
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [alert,setAlert]=useState(true);
+  //設置 selected 位置
+  const handleListItemClick = (event, index) => {
+    setSelectedIndex(index);
+  };
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  //[{ text: '各項數據', url: '/', icon: AssignmentOutlinedIcon},{ text: '自動操作', url: '/inbox', icon: InvertColorsIcon},{ text: '手動操作', url: '/', icon: BuildIcon},{ text: '縮時錄影', url: '/inbox', icon: CameraAltIcon}]
+  //導航欄資訊
   const drawer = (
     <div className={classes.toolbar}>
+      {/* <Collapse in={alert}>
+      <Alert severity="error" onClose={()=>{setAlert(false)}}>This is an error alert — check it out!</Alert>
+      </Collapse> */}
     <List className={classes.marginT}>
-    {stockData.map((item, index) => (
-      // <Link to={item.to}>  //component={Link} to={item.to}
-          <ListItem component={Link} to={item.to} className={classes.marginT}button key={item.label}>
+    { 
+      Array.isArray(NavData) &&
+      NavData.map((item, index) => (
+          <ListItem 
+            className={classes.marginT}
+            classes={{selected:classes.selected}}
+            selected={selectedIndex===item.to} 
+            component={Link} to={item.to}
+            key={item.label}
+            onClick={event => handleListItemClick(event, item.to)}
+            button 
+            >
             <ListItemIcon className={classes.marginl}>{<item.icon/>}</ListItemIcon>
             <ListItemText className={classes.center} primary={item.label} />
           </ListItem>
-    //  </Link>
      ))}
   </List>
   </div>
@@ -40,7 +59,7 @@ function ResponsiveDrawer() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <Hidden smUp>
+      <Hidden mdUp>
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <IconButton
@@ -50,14 +69,13 @@ function ResponsiveDrawer() {
             onClick={handleDrawerToggle}
             className={classes.menuButton}
           >
-            <MenuIcon />
+            <MenuIcon/>
           </IconButton>
         </Toolbar>
       </AppBar>
       </Hidden>
       <nav className={classes.drawer} aria-label="mailbox folders">
-        
-        <Hidden smUp implementation="css">
+        <Hidden mdUp>
           <Drawer
             variant="temporary"
             anchor="left"
@@ -69,11 +87,12 @@ function ResponsiveDrawer() {
             ModalProps={{
               keepMounted: true, // Better open performance on mobile.
             }}
+           
           >
             {drawer}
           </Drawer>
         </Hidden>
-        <Hidden xsDown implementation="css">
+        <Hidden smDown>
           <Drawer
             classes={{
               paper: classes.drawerPaper,
