@@ -1,30 +1,31 @@
-import BuildIcon from '@material-ui/icons/Build';
-import InvertColorsIcon from '@material-ui/icons/InvertColors';
-import CameraAltIcon from '@material-ui/icons/CameraAlt';
-import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
+import BuildIcon from "@material-ui/icons/Build";
+import InvertColorsIcon from "@material-ui/icons/InvertColors";
+import CameraAltIcon from "@material-ui/icons/CameraAlt";
+import AssignmentOutlinedIcon from "@material-ui/icons/AssignmentOutlined";
+import VideocamIcon from "@material-ui/icons/Videocam";
 //建立path 列表名稱 icon data
 export const NavData = [
   {
-    label: '各項數據',
-    to: '/', 
+    label: "各項數據",
+    to: "/",
     icon: AssignmentOutlinedIcon,
   },
-  { 
-    label: '縮時錄影',
-    to: 'TimeLapse',
-    icon: CameraAltIcon,
-  },
-  { 
-    label: '自動操作',
-    to: 'AutoControl',
-    icon: InvertColorsIcon,
-  },
-  { 
-    label: '手動操作',
-    to: 'ContorlForm',
-    icon: BuildIcon,
+  {
+    label: "縮時錄影",
+    to: "TimeLapse",
+    icon: VideocamIcon,
   },
 
+  {
+    label: "自動操作",
+    to: "AutoControl",
+    icon: InvertColorsIcon,
+  },
+  {
+    label: "手動操作",
+    to: "ContorlForm",
+    icon: BuildIcon,
+  },
 ];
 // import BuildIcon from '@material-ui/icons/Build';
 // import InvertColorsIcon from '@material-ui/icons/InvertColors';
@@ -34,7 +35,6 @@ export const NavData = [
 // import Display from '../../pages/Display/Display';
 // import AutoControl from '../../pages/AutoControl/AutoControl';
 // import TimeLapse from '../../pages/TimeLapse/TimeLapse';
-
 
 // const pathIds = {
 //   ControlForm: "ControlForm",
