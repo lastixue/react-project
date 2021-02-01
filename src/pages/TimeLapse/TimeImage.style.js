@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.only("sm")]: {
       marginTop: theme.spacing(6),
     },
-    margin: theme.spacing(0),
   },
   paper: {
     width: "80vw",

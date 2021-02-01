@@ -17,10 +17,11 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import { useStyles } from "./SideDrawer.style";
 import { NavData } from "./NavData";
+import {useLocalStorage} from './hooks/useLocalStorage';
 
 function ResponsiveDrawer() {
   const classes = useStyles();
-  const [selectedIndex, setSelectedIndex] = useState("");
+  const [selectedIndex, setSelectedIndex] = useLocalStorage('selected','');
   const [mobileOpen, setMobileOpen] = useState(false);
   // const [alert,setAlert]=useState(true);
   //設置 selected 位置

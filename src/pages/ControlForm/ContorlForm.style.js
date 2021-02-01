@@ -1,19 +1,21 @@
 import { makeStyles } from "@material-ui/core/styles";
 export const useStyles = makeStyles((theme) => ({
   root: {
-    alignItems: "center",
+    alignItems:"flex-start",
     justifyContent: "center",
+
     [theme.breakpoints.down("sm")]: {
-      marginTop: theme.spacing(8),
+      alignItems: "center",
+      marginTop: theme.spacing(4),
     },
     [theme.breakpoints.up("md")]: {
-      margin: theme.spacing(4, 10),
+      margin: theme.spacing(10, 10),
     },
   },
   paper: {
     display: "flex",
-    minHeight: "350px",
-    margin: theme.spacing(5),
+    minHeight: "150px",
+    margin: theme.spacing(0,5),
     padding: theme.spacing(5, 5),
     alignItems: "flex-start",
     justifyContent: "center",

@@ -1,12 +1,12 @@
 import React from "react";
 // import PropTypes from "prop-types";
 // import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
+import { AppBar, Tabs, Tab, Grid, Typography, Box } from "@material-ui/core";
+// import Tabs from "@material-ui/core/Tabs";
+// import Tab from "@material-ui/core/Tab";
+// import Grid from "@material-ui/core/Grid";
+// import Typography from "@material-ui/core/Typography";
+// import Box from "@material-ui/core/Box";
 import ImageLayout from "./ImageLayout";
 import Test from "./TimeImage";
 import { useStyles } from "./TimeLapse.style";
@@ -22,7 +22,7 @@ function TabPanel({ children, value, index, ...other }) {
       // aria-labelledby={`nav-tab-${index}`}
       {...other}
     >
-      {value === index && <Box p={4}>{children}</Box>}
+      {value === index && <Box>{children}</Box>}
     </Typography>
   );
 }
@@ -36,7 +36,7 @@ function TabPanel({ children, value, index, ...other }) {
 function a11yProps(index) {
   return {
     id: index,
-    "aria-controls": `nav-tabpanel-${index}`,
+    "aria-controls":index,
   };
 }
 

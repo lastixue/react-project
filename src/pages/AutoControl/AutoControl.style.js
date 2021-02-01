@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-export const useStyles = makeStyles((theme) => ({
+ const useStyles = makeStyles((theme) => ({
   root: {
     alignItems: "center",
     justifyContent: "center",
@@ -20,3 +20,4 @@ export const useStyles = makeStyles((theme) => ({
     background: "#EEFFE8",
   },
 }));
+export {useStyles};

@@ -1,30 +1,26 @@
 import React from "react";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
+import {Paper,Grid} from "@material-ui/core";
 import Controlitem from "../../components/Controlitem/Controlitem";
+import ControlSoil from "../../components/Controlitem/ControlSoil";
 import { useStyles } from "./AutoControl.style";
 // import CssBaseline from '@material-ui/core/CssBaseline';
 
 function AutoControl() {
-  const classes = useStyles();
+  const classess = useStyles();
 
   return (
-    <Grid container spacing={3} className={classes.root}>
+    <Grid container spacing={3} className={classess.root}>
       <Grid item xs={12} sm={12} md={12} lg={6}>
-        <Paper className={classes.paper}>
-          <Controlitem tname="土壤濕度值" />
+        <Paper className={classess.paper}>
+          <Controlitem />
         </Paper>
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={6}>
-        <Paper className={classes.paper}>
-          <Controlitem tname="光罩程度值" />
+        <Paper className={classess.paper}>
+          <ControlSoil/>
         </Paper>
       </Grid>
-      <Grid item xs={12} sm={12} md={12} lg={6}>
-        <Paper className={classes.paper}>
-          <Controlitem tname="水箱水位調整" />
-        </Paper>
-      </Grid>
+
     </Grid>
   );
 }

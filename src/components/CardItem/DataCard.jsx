@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 function DataCard() {
   const [data, setData] = useState({ hits: [] });
   useEffect(() => {
     async function getData() {
+      //因為url被註解所以會出錯
       // const result = await axios.get("https://hn.algolia.com/api/v1/search?query=react");
       setData(result.data);
     }

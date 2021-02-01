@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import ResponsiveDrawer from "./components/SideDrawer/SideDrawer";
 import ContorlForm from "./pages/ControlForm/ContorlForm";
 import Display from "./pages/Display/Display";
 import TimeLapse from "./pages/TimeLapse/TimeLapse";
 import AutoControl from "./pages/AutoControl/AutoControl";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import { useStyles } from "./App.style";
 function App() {
   const classes = useStyles();

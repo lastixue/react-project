@@ -9,6 +9,10 @@ const useStyles = makeStyles((theme) => ({
   gridList: {
     width: "auto",
     height: "auto",
+    [theme.breakpoints.only("xs")]: {
+      width: "320px",
+    },
+
   },
   icon: {
     color: "rgba(255, 255, 255, 0.54)",
