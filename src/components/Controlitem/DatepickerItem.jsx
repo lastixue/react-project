@@ -1,14 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
   TextField,
 } from "@material-ui/core";
 import { useStyles } from "./style/DatepickerItem.style";
-function DatepickerItem({minDate,maxDate,name}) {
+function DatepickerItem({getminTime,getmaxTime,name,minTime,maxTime}) {
   const classes = useStyles();
-
-  const date = new Date(+new Date() + 8 * 3600 * 1000); //加入相差的8小時
-  const currentMonth = date.toISOString().substr(0, 16); //toISOString()會有時差問題
-  
   return (
     //form component 放置在pages/ControlForm {/* DatePicker component */}
 
@@ -16,9 +12,9 @@ function DatepickerItem({minDate,maxDate,name}) {
         <TextField
           name={name}
           label="起始時間"
-          type="datetime-local"
-          defaultValue={currentMonth}
-          onChange={minDate}//(e) => setMinDate(e.target.value)
+          type="time"
+          defaultValue={minTime}
+          onChange={getminTime}//(e) => setMinDate(e.target.value)
           className={classes.textField}
           InputLabelProps={{
             shrink: true,
@@ -28,19 +24,17 @@ function DatepickerItem({minDate,maxDate,name}) {
       
         <TextField
           name={name}
+          // className={classes.textField}
           className={classes.textField}
-          defaultValue={currentMonth}
-          onChange={maxDate}//(e) => setMaxDate(e.target.value)
+          defaultValue={maxTime}
+          onChange={getmaxTime}//(e) => setMaxDate(e.target.value)
           label="結束時間"
-          type="datetime-local"
+          type="time"
           InputLabelProps={{
             shrink: true,
           }}
         />
       </div>
   );
-  /* 需新增
-    起始日期時間
-    結束日期時間 */
 }
 export default DatepickerItem;

@@ -5,17 +5,20 @@ const useStyles = makeStyles((theme) => ({
     opacity: 1,
     backgroundColor: "#e6e9ea",
     height: "3px",
-    borderRadius: "3px",
+    borderRadius: 0,
   },
   track: {
     backgroundColor: theme.palette.grey[500],
+    borderRadius: 0,
   },
   slidertrack: {
-    backgroundColor: LightGreen[300],
-    color: LightGreen[300],
+    backgroundColor: "#81b29a",
+    color: "#81b29a",
+    borderRadius: 0,
   },
   sliderthumb: {
-    backgroundColor: LightGreen[300],
+    backgroundColor: "#81b29a",
+    borderRadius: 0,
   },
   checked: {},
 }));

@@ -1,24 +1,33 @@
 import React, { useState } from "react";
-import { Button,Typography } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import Toggle from "./Toggle";
 import SliderMultiple from "./SliderMultiple";
 import DatepickerItem from "./DatepickerItem";
+import moment from "moment";
 import { useStyles } from "./style/Controlitem.style";
 function Controlitem() {
   const classes = useStyles();
   const [auto, setAuto] = useState(false); //設置開關狀態
-  const [minDates, setMinDates] = useState({ minDate: new Date() });
-  const [maxDates, setMaxDates] = useState({ maxDate: new Date() });
+  const [minTime, setMinTime] = useState(moment(new Date()).format("HH:mm"));
+  const [maxTime, setMaxTime] = useState(moment(+new Date()+ 1 * 3600 * 1000).format("HH:mm"));
   const [sliderVal, setSliderVal] = useState([0, 100]);
+  const [test, setTest] = useState(true);
+  
   if (sliderVal[0] > sliderVal[1]) {
     return;
   }
   function handleSubmit(e) {
     e.preventDefault();
-    if (minDates > maxDates) {
+    setTest(true);
+    if (minTime > maxTime) {
       alert("結束時間大於起始時間");
       return;
     }
+    {auto&&console.log(auto);}
+    {minTime&&console.log(minTime);}
+    {maxTime&&console.log(maxTime);} 
+    {sliderVal && console.log(sliderVal)}
+
   }
   //   const [formInput, setFormInput] = useReducer(
   //     (state, newState) => ({ ...state, ...newState }),
@@ -32,20 +41,38 @@ function Controlitem() {
   //   const newValue = evt.target.value;
   //   setFormInput({ [name]: newValue });
   // };
-
   return (
     //form component 放置在pages/ControlForm
-    <form onSubmit={handleSubmit}>
+    <form style={{textAlign:'center'}}onSubmit={handleSubmit}>
       <Typography variant="h5">光照程度數據調整</Typography>
-      <Toggle Change={(e) => setAuto(e.target.checked)} auto={auto} />
-      <SliderMultiple handleChange={(event, val) => setSliderVal(val)} sliderVal={sliderVal}/>
-      <DatepickerItem
-        minDate={(e) => setMinDates(e.target.value)}
-        maxDate={(e) => setMaxDates(e.target.value)}
+      <Toggle
+        Change={(e) => {
+          setAuto(e.target.checked);
+          setTest(false);
+        }}
+        auto={auto}
+        label="自動操作"
       />
+      <SliderMultiple
+        handleChange={(event, val) => {
+          setSliderVal(val), setTest(false);
+        }}
+        sliderVal={sliderVal}
+      />
+      <DatepickerItem
+        getminTime={(e) => {
+          setMinTime(e.target.value), setTest(false);
+        }}
+        getmaxTime={(e) => {
+          setMaxTime(e.target.value), setTest(false);
+        }}
+        minTime={minTime}
+        maxTime={maxTime}
+      />
+
       <div className={classes.center}>
         <Button
-          className={classes.button}
+          className={test ? classes.button : classes.buttons}
           type="submit"
           variant="contained"
           size="large"
@@ -55,10 +82,8 @@ function Controlitem() {
           送出
         </Button>
       </div>
+      <p className={test ? classes.errors : classes.error}>尚有更改未送出</p>
     </form>
   );
-  /* 需新增
-    起始日期時間
-    結束日期時間 */
 }
 export default Controlitem;

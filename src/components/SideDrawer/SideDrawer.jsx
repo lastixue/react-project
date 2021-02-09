@@ -10,6 +10,7 @@ import {
   ListItemText,
   ListItemIcon,
   Collapse,
+  Button,
   Toolbar,
 } from "@material-ui/core";
 // import Alert from '@material-ui/lab/Alert';
@@ -17,11 +18,24 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import { useStyles } from "./SideDrawer.style";
 import { NavData } from "./NavData";
-import {useLocalStorage} from './hooks/useLocalStorage';
+import { useLocalStorage } from "./hooks/useLocalStorage";
 
 function ResponsiveDrawer() {
+  
+  function askPermission(evt) {
+    Notification.requestPermission().then(function (permission) {
+      //notificationButtonUpdate();
+    });
+  }
+  // function notificationButtonUpdate(){
+  //   if (Notification.permission='granted'){
+  //       document.getElementsByTagName('Button').disabled=true;
+  //   }else{
+  //     document.getElementsByTagName('Button').disabled=false;
+  //   }
+  // }
   const classes = useStyles();
-  const [selectedIndex, setSelectedIndex] = useLocalStorage('selected','');
+  const [selectedIndex, setSelectedIndex] = useLocalStorage("selected", "");
   const [mobileOpen, setMobileOpen] = useState(false);
   // const [alert,setAlert]=useState(true);
   //設置 selected 位置
@@ -31,9 +45,11 @@ function ResponsiveDrawer() {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
   //導航欄資訊
   const drawer = (
     <div className={classes.toolbar}>
+      <Button onClick={askPermission}>通知</Button>
       {/* <Collapse in={alert}>
       <Alert severity="error" onClose={()=>{setAlert(false)}}>This is an error alert — check it out!</Alert>
       </Collapse> */}

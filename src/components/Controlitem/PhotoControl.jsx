@@ -5,7 +5,7 @@ import SliderSingle from "./SliderSingle";
 import DatepickerItem from "./DatepickerItem";
 import moment from "moment";
 import { useStyles } from "./style/Controlitem.style";
-function ControlSoil() {
+function PhotoControl() {
   const classes = useStyles();
   const [auto, setAuto] = useState(false); //設置開關狀態
   const [minTime, setMinTime] = useState(moment(new Date()).format("HH:mm"));
@@ -45,17 +45,9 @@ function ControlSoil() {
           setAuto(e.target.checked), setTest(false);
         }}
         auto={auto}
-        label="自動操作"
+        label="夜間模式"
       />
-      <SliderSingle
-        handleChange={(event, val) => {
-          setSingelVal(val), setTest(false);
-        }}
-        SingelVal={SingelVal}
-        min={0}
-        max={100}
-        step={10}
-      />
+
       <DatepickerItem
         getminTime={(e) => {
           setMinTime(e.target.value), setTest(false);
@@ -65,6 +57,15 @@ function ControlSoil() {
         }}
         minTime={minTime}
         maxTime={maxTime}
+      />
+      <SliderSingle
+        handleChange={(event, val) => {
+          setSingelVal(val), setTest(false);
+        }}
+        SingelVal={SingelVal}
+        min={5}
+        max={30}
+        step={5}
       />
       <div className={classes.center}>
         <Button
@@ -85,4 +86,4 @@ function ControlSoil() {
     起始日期時間
     結束日期時間 */
 }
-export default ControlSoil;
+export default PhotoControl;

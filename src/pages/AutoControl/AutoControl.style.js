@@ -12,7 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
   },
   paper: {
     display: "flex",
-    minHeight: "350px",
+    minHeight: "450px",
     margin: theme.spacing(5),
     padding: theme.spacing(5, 5),
     alignItems: "flex-start",

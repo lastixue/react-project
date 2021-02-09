@@ -3,7 +3,7 @@ import { Slider } from "@material-ui/core";
 import { useStyles } from "./style/SliderItem.style";
 // import CssBaseline from '@material-ui/core/CssBaseline';
 
-function SliderSingle({ handleChange, SingelVal,name }) {
+function SliderSingle({ handleChange,SingelVal,name,min,max,step }) {
   const classes = useStyles();
 
   return (
@@ -24,7 +24,9 @@ function SliderSingle({ handleChange, SingelVal,name }) {
           valueLabelDisplay="auto"
           aria-labelledby="discrete-slider"
           // aria-labelledby="discrete-slider"
-          step={10}
+          min={min}
+          max={max}
+          step={step}
           // marks
         />
       </div>

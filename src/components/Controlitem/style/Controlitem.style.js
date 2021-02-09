@@ -1,15 +1,30 @@
 //Controlitem 樣式
 import { makeStyles } from "@material-ui/core/styles";
-import LightGreen from "@material-ui/core/colors/LightGreen";
+// import LightGreen from "@material-ui/core/colors/LightGreen";
 const useStyles = makeStyles({
   button: {
-    background: LightGreen[300],
+    background: "#81b29a",
     borderRadius: 3,
     border: 0,
     color: "white",
     "&:hover": {
-      background: LightGreen[400],
+      background: "#a1b5ab",
     },
+  },
+  buttons: {
+    background: "#edc555",
+    borderRadius: 3,
+    border: 0,
+    color: "white",
+    "&:hover": {
+      background: "#edd287",
+    },
+  },
+  error: {
+    color: "red",
+  },
+  errors: {
+    display: "none",
   },
   center: {
     display: "flex",

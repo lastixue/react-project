@@ -38,7 +38,7 @@ function ImageLayout(props) {
   };
   return (
     <div className={classes.root}>
-      <GridList cols={responseCol()}className={classes.gridList}>
+      <GridList cols={responseCol()} className={classes.gridList}>
         {Array.isArray(imagesList) &&
           imagesList.map((photos) => (
             <GridListTile key={photos.id}>
@@ -46,7 +46,6 @@ function ImageLayout(props) {
                 style={{
                   objectFit: "contain",
                   cursor: "pointer",
-                  
                 }}
                 value={photos.id}
                 onClick={() => handleClickOpen(photos)}
@@ -62,7 +61,11 @@ function ImageLayout(props) {
             </GridListTile>
           ))}
       </GridList>
-      <Dialog fullScreen open={selectedPhoto !== null} onClose={handleClose}>
+      <Dialog
+        fullScreen
+        open={selectedPhoto !== null}
+        onClose={handleClose}
+      >
         <div style={{ cursor: "pointer", width: "50px" }} onClick={handleClose}>
           <CloseIcon />
         </div>

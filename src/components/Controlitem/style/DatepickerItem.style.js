@@ -4,6 +4,12 @@ const useStyles = makeStyles((theme) => ({
   textField: {
     display: "inline-block",
     margin: theme.spacing(5, 2),
+    "& label.Mui-focused": {
+      color: "#81b29a"
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor:"#81b29a"
+    }
   },
   center: {
     display: "flex",
