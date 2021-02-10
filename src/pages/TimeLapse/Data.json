@@ -2,92 +2,68 @@
   {
     "id": 1,
     "src": "https://via.placeholder.com/600/92c952",
-    "title": "foo",
-    "description": "bar",
-    "author": "Rajini"
+    "date": "2021-02-10"
   },
   {
     "id": 2,
     "src": "https://via.placeholder.com/600/771796",
-    "title": "foo",
-    "description": "bar",
-    "author": "Kamal"
+    "date": "2021-02-10"
   },
   {
     "id": 3,
     "src": "https://via.placeholder.com/600/24f355",
-    "title": "foo",
-    "description": "bar",
-    "author": "Vijay"
+    "date": "2021-02-10"
   },
   {
     "id": 4,
     "src": "https://via.placeholder.com/600/d32776",
-    "title": "foo",
-    "description": "bar",
-    "author": "Ajith"
+    "date": "2021-02-10"
   },
   {
     "id": 5,
     "src": "https://via.placeholder.com/600/f66b97",
-    "title": "Sunset",
-    "description": "bar",
-    "author": "Sharukh"
+    "date": "2021-02-10"
   },
   {
     "id": 6,
     "src": "https://via.placeholder.com/600/56a8c2",
-    "title": "Sunset_Road",
-    "description": "bar",
-    "author": "Sudhanshu"
+    "date": "2021-02-10"
   },
   {
     "id": 5,
     "src": "https://via.placeholder.com/600/b0f7cc",
-    "title": "Sunset on the Bridge",
-    "description": "bar",
-    "author": "Dabang"
+    "date": "2021-02-10"
   },
   {
     "id": 5,
     "src": "https://via.placeholder.com/600/54176f",
-    "title": "Fire",
-    "description": "bar",
-    "author": "Komali"
+    "date": "2021-02-10"
   },
   {
     "id": 5,
     "src": "https://via.placeholder.com/600/51aa97",
-    "title": "Set",
-    "description": "bar",
-    "author": "CCV"
+    "date": "2021-02-10"
   },
   {
     "id": 5,
     "src": "https://via.placeholder.com/600/b0f7cc",
     "title": "Sunset on the Bridge",
-    "description": "bar",
-    "author": "Dabang"
+    "date": "2021-02-10"
   },
   {
     "id": 5,
     "src": "https://via.placeholder.com/600/54176f",
-    "title": "Fire",
-    "description": "bar",
-    "author": "Komali"
+    "date": "2021-02-10"
+    
   },
   {
     "id": 5,
     "src": "https://via.placeholder.com/600/b0f7cc",
-    "title": "Sunset on the Bridge",
-    "description": "bar",
-    "author": "Dabang"
+    "date": "2021-02-10"
   },
   {
     "id": 5,
     "src": "https://via.placeholder.com/600/1fe46f",
-    "title": "Fire",
-    "description": "bar",
-    "author": "Komali"
+    "date": "2021-02-10"
   }
 ]

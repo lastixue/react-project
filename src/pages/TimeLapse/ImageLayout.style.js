@@ -5,8 +5,13 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: "wrap",
     justifyContent: "space-around",
     overflow: "hidden",
+    margin:theme.spacing(0,3),
+    [theme.breakpoints.only("sm")]:{
+      margin:theme.spacing(3),
+    }
   },
   gridList: {
+    
     width: "auto",
     height: "auto",
     [theme.breakpoints.only("xs")]: {

@@ -3,7 +3,7 @@ import {
   TextField,
 } from "@material-ui/core";
 import { useStyles } from "./style/DatepickerItem.style";
-function DatepickerItem({getminTime,getmaxTime,name,minTime,maxTime}) {
+function DatepickerItem({getminTime,getmaxTime,name,minTime,maxTime,display,label}) {
   const classes = useStyles();
   return (
     //form component 放置在pages/ControlForm {/* DatePicker component */}
@@ -11,7 +11,7 @@ function DatepickerItem({getminTime,getmaxTime,name,minTime,maxTime}) {
       <div>
         <TextField
           name={name}
-          label="起始時間"
+          label={label}
           type="time"
           defaultValue={minTime}
           onChange={getminTime}//(e) => setMinDate(e.target.value)
@@ -26,6 +26,7 @@ function DatepickerItem({getminTime,getmaxTime,name,minTime,maxTime}) {
           name={name}
           // className={classes.textField}
           className={classes.textField}
+          style={{display:display}}
           defaultValue={maxTime}
           onChange={getmaxTime}//(e) => setMaxDate(e.target.value)
           label="結束時間"

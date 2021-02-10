@@ -18,7 +18,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 import { useStyles } from "./SideDrawer.style";
 import { NavData } from "./NavData";
-import { useLocalStorage } from "./hooks/useLocalStorage";
+import { useSessionStorage } from "./hooks/useSessionStorage";
 
 function ResponsiveDrawer() {
   
@@ -35,7 +35,7 @@ function ResponsiveDrawer() {
   //   }
   // }
   const classes = useStyles();
-  const [selectedIndex, setSelectedIndex] = useLocalStorage("selected", "");
+  const [selectedIndex, setSelectedIndex] = useSessionStorage("selected", "/");
   const [mobileOpen, setMobileOpen] = useState(false);
   // const [alert,setAlert]=useState(true);
   //設置 selected 位置

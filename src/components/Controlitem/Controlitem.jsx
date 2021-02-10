@@ -68,6 +68,8 @@ function Controlitem() {
         }}
         minTime={minTime}
         maxTime={maxTime}
+        label="起始時間"
+        unit="%%"
       />
 
       <div className={classes.center}>

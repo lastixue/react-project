@@ -65,6 +65,7 @@ function ControlSoil() {
         }}
         minTime={minTime}
         maxTime={maxTime}
+        label="起始時間"
       />
       <div className={classes.center}>
         <Button

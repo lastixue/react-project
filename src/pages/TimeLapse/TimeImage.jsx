@@ -8,7 +8,7 @@ function Test() {
     <Grid container className={classes.root}>
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <Paper className={classes.paper}>
-          <p>123</p>
+         
         </Paper>
       </Grid>
     </Grid>

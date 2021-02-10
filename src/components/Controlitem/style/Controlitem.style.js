@@ -21,7 +21,10 @@ const useStyles = makeStyles({
     },
   },
   error: {
-    color: "red",
+    textAlign:"left",
+    fontSize:"1em",
+    fontWeight:"bold",
+    color: "#eb7763",
   },
   errors: {
     display: "none",

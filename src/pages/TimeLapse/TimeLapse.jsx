@@ -73,7 +73,7 @@ function TimeLapse() {
           aria-label="縮時相簿功能"
         >
           <LinkTab label="相簿" {...a11yProps(0)} />
-          <LinkTab label="縮時錄影" {...a11yProps(1)} />
+          <LinkTab label="最近圖片" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>

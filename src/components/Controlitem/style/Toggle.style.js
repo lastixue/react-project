@@ -22,16 +22,20 @@ const useStyles = makeStyles((theme) => ({
   thumb: {
     width: "20px",
     height: "20px",
-    position: "relative",
-    top: 2,
+    //position: "relative",
+    //top: 2,
     borderRadius: 0,
   },
   Typography: {
-    margin: theme.spacing(0, 1.5),
+    margin:theme.spacing(0, 1.5),
+    position: "relative",
+    top:1,
   }, //theme.spacing 為defaut theme 預設間距 8px 所以theme.spacing(2)=8*2
   track: {
     backgroundColor: theme.palette.grey[500],
     // border:"black 5px solid",
+    position: "relative",
+    bottom: 2.5,
     height: "19px",
     width: "40px",
     borderRadius: 0,

@@ -50,22 +50,18 @@ function ImageLayout(props) {
                 value={photos.id}
                 onClick={() => handleClickOpen(photos)}
                 src={photos.src}
-                alt={photos.title}
+                alt={photos.date}
                 effect="opacity"
               />
 
               <GridListTileBar
-                title={photos.title}
-                subtitle={<span>by: {photos.author}</span>}
+                title={photos.date}
+                //subtitle={<span>by: {photos.author}</span>}
               />
             </GridListTile>
           ))}
       </GridList>
-      <Dialog
-        fullScreen
-        open={selectedPhoto !== null}
-        onClose={handleClose}
-      >
+      <Dialog fullScreen open={selectedPhoto !== null} onClose={handleClose}>
         <div style={{ cursor: "pointer", width: "50px" }} onClick={handleClose}>
           <CloseIcon />
         </div>
@@ -75,12 +71,12 @@ function ImageLayout(props) {
               onClick={handleClose}
               style={{ height: "100vh", width: "100vw", cursor: "pointer" }}
               src={selectedPhoto.src}
-              alt={selectedPhoto.title}
+              alt={selectedPhoto.date}
             />
             <p style={{ textAlign: "right" }}>
               {selectedPhoto.title}
               <span style={{ margin: "0 10px" }}>
-                作者:{selectedPhoto.author}
+                {selectedPhoto.date}
               </span>
             </p>
           </>
