@@ -1,5 +1,5 @@
 import React from "react";
-import { useStyles } from "./TimeImage.style";
+import { useStyles } from "./style/TimeImage.style";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 function Test() {

@@ -4,3 +4,4 @@ if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) { //判断iPhone|iPad|i
 } 
 navigator 判斷瀏覽器作業系統
 只留下個功能開關
+判斷更改後是否為預設值 如為預設值settest(false)

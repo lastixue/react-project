@@ -3,7 +3,7 @@ import { Slider } from "@material-ui/core";
 import { useStyles } from "./style/SliderItem.style";
 // import CssBaseline from '@material-ui/core/CssBaseline';
 
-function SliderSingle({handleChange,SingelVal,name,min,max,step}) {
+function SliderSingle({handleChange,SingelVal,name,min,max,step,label}) {
   const classes = useStyles();
 
   return (
@@ -40,7 +40,7 @@ function SliderSingle({handleChange,SingelVal,name,min,max,step}) {
           lineHeight: 0,
         }}
       >
-        <div>{`${SingelVal} %`}</div>
+        <span>{`${SingelVal}${label}`}</span>
       </div>
     </>
   );

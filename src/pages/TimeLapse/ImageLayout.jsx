@@ -9,7 +9,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 import CloseIcon from "@material-ui/icons/Close";
 import imagesList from "./Data.json";
-import { useStyles } from "./ImageLayout.style";
+import { useStyles } from "./style/ImageLayout.style";
 function ImageLayout(props) {
   const responseCol = () => {
     if (isWidthUp("xl", props.width)) {

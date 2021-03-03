@@ -5,7 +5,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { useStyles } from "./style/Toggle.style";
-function Toggle({ Change ,auto ,name,label}) {
+function Toggle({ Change ,auto ,name,label,value}) {
   const classes = useStyles();
   // const [auto, setAuto] = useState(false); //設置開關狀態
   return (
@@ -14,6 +14,7 @@ function Toggle({ Change ,auto ,name,label}) {
       <FormControlLabel
         labelPlacement="Start"
         label={label}
+        value={value}
         control={
           <Switch
             name={name}

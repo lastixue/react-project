@@ -7,7 +7,7 @@ import VideocamIcon from "@material-ui/icons/Videocam";
 export const NavData = [
   {
     label: "各項數據",
-    to: "/",
+    to: "Display",
     icon: AssignmentOutlinedIcon,
   },
   {
@@ -26,6 +26,7 @@ export const NavData = [
     to: "ContorlForm",
     icon: BuildIcon,
   },
+
 ];
 // import BuildIcon from '@material-ui/icons/Build';
 // import InvertColorsIcon from '@material-ui/icons/InvertColors';

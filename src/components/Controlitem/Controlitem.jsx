@@ -9,13 +9,19 @@ function Controlitem() {
   const classes = useStyles();
   const [auto, setAuto] = useState(false); //設置開關狀態
   const [minTime, setMinTime] = useState(moment(new Date()).format("HH:mm"));
-  const [maxTime, setMaxTime] = useState(moment(+new Date()+ 1 * 3600 * 1000).format("HH:mm"));
+  const [maxTime, setMaxTime] = useState(
+    moment(+new Date() + 1 * 3600 * 1000).format("HH:mm")
+  );
   const [sliderVal, setSliderVal] = useState([0, 100]);
   const [test, setTest] = useState(true);
-  
-  if (sliderVal[0] > sliderVal[1]) {
-    return;
+
+  if (sliderVal[0] === sliderVal[1]) {
+      sliderVal[1] += 10;
+    if(sliderVal[1]>100){
+      sliderVal[1]-=10;
+    }
   }
+
   function handleSubmit(e) {
     e.preventDefault();
     setTest(true);
@@ -23,11 +29,14 @@ function Controlitem() {
       alert("結束時間大於起始時間");
       return;
     }
-    {auto&&console.log(auto);}
-    {minTime&&console.log(minTime);}
-    {maxTime&&console.log(maxTime);} 
-    {sliderVal && console.log(sliderVal)}
-
+    if (sliderVal[0] === sliderVal[1]) {
+      alert("數值相同請重新輸入");
+      return;
+    }
+    {console.log(auto);}
+    {minTime && console.log(minTime);}
+    {maxTime && console.log(maxTime);}
+    {sliderVal && console.log(sliderVal);}
   }
   //   const [formInput, setFormInput] = useReducer(
   //     (state, newState) => ({ ...state, ...newState }),
@@ -43,13 +52,11 @@ function Controlitem() {
   // };
   return (
     //form component 放置在pages/ControlForm
-    <form style={{textAlign:'center'}}onSubmit={handleSubmit}>
+    <form style={{ textAlign: "center" }} onSubmit={handleSubmit}>
       <Typography variant="h5">光照程度數據調整</Typography>
       <Toggle
-        Change={(e) => {
-          setAuto(e.target.checked);
-          setTest(false);
-        }}
+        value={auto}
+        Change={(e)=>{setAuto(e.target.checked),setTest(false)}}
         auto={auto}
         label="自動操作"
       />

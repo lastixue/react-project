@@ -9,7 +9,7 @@ import { AppBar, Tabs, Tab, Grid, Typography, Box } from "@material-ui/core";
 // import Box from "@material-ui/core/Box";
 import ImageLayout from "./ImageLayout";
 import Test from "./TimeImage";
-import { useStyles } from "./TimeLapse.style";
+import { useStyles } from "./style/TimeLapse.style";
 function TabPanel({ children, value, index, ...other }) {
   return (
     <Typography

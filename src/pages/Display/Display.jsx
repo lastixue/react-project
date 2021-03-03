@@ -6,7 +6,7 @@ import CircleProgress from "../../components/CardItem/CircleProgress";
 import DataCard from "../../components/CardItem/DataCard";
 import Bar from "../../components/Chart/BarChart";
 import { Grow } from "@material-ui/core";
-import { useStyles } from "./Display.style";
+import { useStyles } from "./style/Display.style";
 
 function Display() {
   const classes = useStyles();

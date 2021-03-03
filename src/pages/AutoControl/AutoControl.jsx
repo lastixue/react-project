@@ -3,7 +3,7 @@ import {Paper,Grid} from "@material-ui/core";
 import Controlitem from "../../components/Controlitem/Controlitem";
 import ControlSoil from "../../components/Controlitem/ControlSoil";
 import PhotoControl from "../../components/Controlitem/PhotoControl";
-import { useStyles } from "./AutoControl.style";
+import { useStyles } from "./style/AutoControl.style";
 // import CssBaseline from '@material-ui/core/CssBaseline';
 
 function AutoControl() {

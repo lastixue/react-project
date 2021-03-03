@@ -6,9 +6,7 @@ import { useStyles } from "./style/SliderItem.style";
 function SliderMultiple({handleChange,sliderVal,name}) {
   const classes = useStyles();
   // const [sliderVal, setSliderVal] = useState([0, 100]);
-  // if (sliderVal[0] > sliderVal[1]) {
-  //   return;
-  // }
+
   return (
     //form component 放置在pages/ControlForm {/* Slider component */}
     <>

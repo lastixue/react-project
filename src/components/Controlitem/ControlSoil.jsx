@@ -55,7 +55,9 @@ function ControlSoil() {
         min={0}
         max={100}
         step={10}
+        label="%"
       />
+      
       <DatepickerItem
         getminTime={(e) => {
           setMinTime(e.target.value), setTest(false);

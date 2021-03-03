@@ -24,7 +24,7 @@ export function useSessionStorage(key, initialValue) {
       // Save state
       setStoredValue(valueToStore);
       // Save to local storage
-      window.sessionStorage.setItem(key, JSON.stringFFify(valueToStore));
+      window.sessionStorage.setItem(key, JSON.stringify(valueToStore));
     } catch (error) {
       // A more advanced implementation would handle the error case
       console.log(error);
