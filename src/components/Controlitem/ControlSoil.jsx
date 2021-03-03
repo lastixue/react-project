@@ -5,6 +5,7 @@ import SliderSingle from "./SliderSingle";
 import DatepickerItem from "./DatepickerItem";
 import moment from "moment";
 import { useStyles } from "./style/Controlitem.style";
+//控制土壤濕度表單
 function ControlSoil() {
   const classes = useStyles();
   const [auto, setAuto] = useState(false); //設置開關狀態
@@ -12,12 +13,12 @@ function ControlSoil() {
   const [maxTime, setMaxTime] = useState(
     moment(+new Date() + 1 * 3600 * 1000).format("HH:mm")
   );
-  const [test, setTest] = useState(true);
+  const [warn, setWarn] = useState(true);
   const [SingelVal, setSingelVal] = useState(0);
 
   function handleSubmit(e) {
     e.preventDefault();
-    setTest(true);
+    setWarn(true);
     if (minTime > maxTime) {
       alert("結束時間大於起始時間");
       return;
@@ -37,19 +38,18 @@ function ControlSoil() {
   // };
 
   return (
-    //form component 放置在pages/ControlForm
     <form style={{ textAlign: "center" }} onSubmit={handleSubmit}>
       <Typography variant="h5">土壤濕度數據調整</Typography>
       <Toggle
         Change={(e) => {
-          setAuto(e.target.checked), setTest(false);
+          setAuto(e.target.checked), setWarn(false);
         }}
         auto={auto}
         label="自動操作"
       />
       <SliderSingle
         handleChange={(event, val) => {
-          setSingelVal(val), setTest(false);
+          setSingelVal(val), setWarn(false);
         }}
         SingelVal={SingelVal}
         min={0}
@@ -60,10 +60,10 @@ function ControlSoil() {
       
       <DatepickerItem
         getminTime={(e) => {
-          setMinTime(e.target.value), setTest(false);
+          setMinTime(e.target.value), setWarn(false);
         }}
         getmaxTime={(e) => {
-          setMaxTime(e.target.value), setTest(false);
+          setMaxTime(e.target.value), setWarn(false);
         }}
         minTime={minTime}
         maxTime={maxTime}
@@ -71,7 +71,7 @@ function ControlSoil() {
       />
       <div className={classes.center}>
         <Button
-          className={test ? classes.button : classes.buttons}
+          className={warn ? classes.button : classes.buttons}
           type="submit"
           variant="contained"
           size="large"
@@ -81,11 +81,8 @@ function ControlSoil() {
           送出
         </Button>
       </div>
-      <p className={test ? classes.errors : classes.error}>尚有更改未送出</p>
+      <p className={warn ? classes.errors : classes.error}>尚有更改未送出</p>
     </form>
   );
-  /* 需新增
-    起始日期時間
-    結束日期時間 */
 }
 export default ControlSoil;

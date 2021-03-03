@@ -5,15 +5,16 @@ import SliderSingle from "./SliderSingle";
 import DatepickerItem from "./DatepickerItem";
 import moment from "moment";
 import { useStyles } from "./style/Controlitem.style";
+//拍照模組表單
 function PhotoControl() {
   const classes = useStyles();
   const [auto, setAuto] = useState(false); //設置開關狀態
   const [minTime, setMinTime] = useState(moment(new Date()).format("HH:mm"));
-  const [test, setTest] = useState(true);
+  const [warn, setWarn] = useState(true);
   const [SingelVal, setSingelVal] = useState(5);
   function handleSubmit(e) {
     e.preventDefault();
-    setTest(true);
+    setWarn(true);
   }
   //   const [formInput, setFormInput] = useReducer(
   //     (state, newState) => ({ ...state, ...newState }),
@@ -34,14 +35,14 @@ function PhotoControl() {
       <Typography variant="h5">拍照間隔調整</Typography>
       <Toggle
         Change={(e) => {
-          setAuto(e.target.checked), setTest(false);
+          setAuto(e.target.checked), setWarn(false);
         }}
         auto={auto}
         label="夜間模式"
       />
       <SliderSingle
         handleChange={(event, val) => {
-          setSingelVal(val), setTest(false);
+          setSingelVal(val), setWarn(false);
         }}
         SingelVal={SingelVal}
         min={5}
@@ -49,13 +50,13 @@ function PhotoControl() {
         step={5}
         label="分鐘"
       />
-     
+
       <DatepickerItem
         getminTime={(e) => {
-          setMinTime(e.target.value), setTest(false);
+          setMinTime(e.target.value), setWarn(false);
         }}
         getmaxTime={(e) => {
-          setMaxTime(e.target.value), setTest(false);
+          setMaxTime(e.target.value), setWarn(false);
         }}
         minTime={minTime}
         display="none"
@@ -64,7 +65,7 @@ function PhotoControl() {
 
       <div className={classes.center}>
         <Button
-          className={test ? classes.button : classes.buttons}
+          className={warn ? classes.button : classes.buttons}
           type="submit"
           variant="contained"
           size="large"
@@ -74,11 +75,8 @@ function PhotoControl() {
           送出
         </Button>
       </div>
-      <p className={test ? classes.errors : classes.error}>尚有更改未送出</p>
+      <p className={warn ? classes.errors : classes.error}>尚有更改未送出</p>
     </form>
   );
-  /* 需新增
-    起始日期時間
-    結束日期時間 */
 }
 export default PhotoControl;

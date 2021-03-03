@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Slider } from "@material-ui/core";
 import { useStyles } from "./style/SliderItem.style";
-// import CssBaseline from '@material-ui/core/CssBaseline';
-
-function SliderMultiple({handleChange,sliderVal,name}) {
+//範圍拉條組件
+function SliderMultiple({ handleChange, sliderVal, name }) {
   const classes = useStyles();
-  // const [sliderVal, setSliderVal] = useState([0, 100]);
 
   return (
-    //form component 放置在pages/ControlForm {/* Slider component */}
     <>
       <div className={classes.slider}>
         <Slider
@@ -19,7 +16,7 @@ function SliderMultiple({handleChange,sliderVal,name}) {
             valueLabel: classes.slidertrack,
             rail: classes.rail,
           }}
-          onChange={handleChange}//(event, val) => setSliderVal(val)
+          onChange={handleChange} //(event, val) => setSliderVal(val)
           value={sliderVal}
           defaultValue={[0, 10]}
           min={0}
@@ -46,8 +43,5 @@ function SliderMultiple({handleChange,sliderVal,name}) {
       </div>
     </>
   );
-  /* 需新增
-    起始日期時間
-    結束日期時間 */
 }
 export default SliderMultiple;

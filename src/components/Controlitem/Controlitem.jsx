@@ -5,6 +5,7 @@ import SliderMultiple from "./SliderMultiple";
 import DatepickerItem from "./DatepickerItem";
 import moment from "moment";
 import { useStyles } from "./style/Controlitem.style";
+//光照控制表單
 function Controlitem() {
   const classes = useStyles();
   const [auto, setAuto] = useState(false); //設置開關狀態
@@ -13,7 +14,7 @@ function Controlitem() {
     moment(+new Date() + 1 * 3600 * 1000).format("HH:mm")
   );
   const [sliderVal, setSliderVal] = useState([0, 100]);
-  const [test, setTest] = useState(true);
+  const [warn, setWarn] = useState(true);
 
   if (sliderVal[0] === sliderVal[1]) {
       sliderVal[1] += 10;
@@ -24,7 +25,7 @@ function Controlitem() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setTest(true);
+    setWarn(true);
     if (minTime > maxTime) {
       alert("結束時間大於起始時間");
       return;
@@ -56,22 +57,22 @@ function Controlitem() {
       <Typography variant="h5">光照程度數據調整</Typography>
       <Toggle
         value={auto}
-        Change={(e)=>{setAuto(e.target.checked),setTest(false)}}
+        Change={(e)=>{setAuto(e.target.checked),setWarn(false)}}
         auto={auto}
         label="自動操作"
       />
       <SliderMultiple
         handleChange={(event, val) => {
-          setSliderVal(val), setTest(false);
+          setSliderVal(val), setWarn(false);
         }}
         sliderVal={sliderVal}
       />
       <DatepickerItem
         getminTime={(e) => {
-          setMinTime(e.target.value), setTest(false);
+          setMinTime(e.target.value), setWarn(false);
         }}
         getmaxTime={(e) => {
-          setMaxTime(e.target.value), setTest(false);
+          setMaxTime(e.target.value), setWarn(false);
         }}
         minTime={minTime}
         maxTime={maxTime}
@@ -81,7 +82,7 @@ function Controlitem() {
 
       <div className={classes.center}>
         <Button
-          className={test ? classes.button : classes.buttons}
+          className={warn ? classes.button : classes.buttons}
           type="submit"
           variant="contained"
           size="large"
@@ -91,7 +92,7 @@ function Controlitem() {
           送出
         </Button>
       </div>
-      <p className={test ? classes.errors : classes.error}>尚有更改未送出</p>
+      <p className={warn ? classes.errors : classes.error}>尚有更改未送出</p>
     </form>
   );
 }
