@@ -4,7 +4,7 @@ import App from "./App";
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
-    .register("/service-worker.js", { scope: "../dist/" })
+    .register("/service-worker.js", { scope: "./" })
     .then((reg) => {
       console.log("service worker installed :", reg);
       if ("Notification" in window) {
@@ -20,21 +20,21 @@ if ("serviceWorker" in navigator) {
     })
     .catch((err) => console.log("Error", err));
 } //可能是檔案位置與scope導致錯誤
-function displayNotification() {
-  let test = 0;
-  let n = 0;
-  if (Notification.permission === "granted") {
-    for (n = 0; n < 100; n++) {
-      test += n;
-      console.log(test);
-    }
-    navigator.serviceWorker.getRegistration("../dist/").then((reg) => {
-      if (test === 4950) {
-        reg.showNotification("test");
-      }
-    });
-  }
-}
+// function displayNotification() {
+//   let test = 0;
+//   let n = 0;
+//   if (Notification.permission === "granted") {
+//     for (n = 0; n < 100; n++) {
+//       test += n;
+//       console.log(test);
+//     }
+//     navigator.serviceWorker.getRegistration("../dist/").then((reg) => {
+//       if (test === 4950) {
+//         reg.showNotification("test");
+//       }
+//     });
+//   }
+// }
 // function displayNotification() {
 //   if (Notification.permission == "granted") {
 //     navigator.serviceWorker.getRegistration("/service-worker.js", { scope: "../dist/" }).then((reg) => {
