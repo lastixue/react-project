@@ -2,7 +2,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 // import LightGreen from "@material-ui/core/colors/LightGreen";
 const useStyles = makeStyles({
-  button: {
+  warnButton: {
     background: "#81b29a",
     borderRadius: 3,
     border: 0,
@@ -11,7 +11,7 @@ const useStyles = makeStyles({
       background: "#a1b5ab",
     },
   },
-  buttons: {
+  button: {
     background: "#edc555",
     borderRadius: 3,
     border: 0,
