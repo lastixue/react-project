@@ -18,7 +18,7 @@ export default function Bar() {
     ],
   };
 
-  var options = {
+  let options = {
     legend: {
       position: "right",
       labels: {
@@ -36,7 +36,9 @@ export default function Bar() {
 
   return (
     <div>
-      <Line data={data} options={options} />
+      <Line data={data} 
+// @ts-ignore
+      options={options} />
     </div>
   );
 }

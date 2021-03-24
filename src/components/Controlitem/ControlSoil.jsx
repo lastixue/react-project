@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from "react";
 import { Button, Typography } from "@material-ui/core";
 import Toggle from "./Toggle";
@@ -19,10 +20,6 @@ function ControlSoil() {
   function handleSubmit(e) {
     e.preventDefault();
     setWarn(true);
-    if (minTime > maxTime) {
-      alert("結束時間大於起始時間");
-      return;
-    }
   }
   //   const [formInput, setFormInput] = useReducer(
   //     (state, newState) => ({ ...state, ...newState }),
@@ -41,11 +38,12 @@ function ControlSoil() {
     <form style={{ textAlign: "center" }} onSubmit={handleSubmit}>
       <Typography variant="h5">土壤濕度數據調整</Typography>
       <Toggle
+        value={auto}
         Change={(e) => {
           setAuto(e.target.checked), setWarn(false);
         }}
         auto={auto}
-        label="自動操作"
+        label="起始時間"
       />
       <SliderSingle
         handleChange={(event, val) => {
@@ -57,7 +55,7 @@ function ControlSoil() {
         step={10}
         label="%"
       />
-      
+
       <DatepickerItem
         getminTime={(e) => {
           setMinTime(e.target.value), setWarn(false);
@@ -71,12 +69,12 @@ function ControlSoil() {
       />
       <div className={classes.center}>
         <Button
-          className={warn ? classes.button : classes.buttons}
+          className={warn ? classes.warnButton : classes.button}
           type="submit"
           variant="contained"
           size="large"
           color="inherit"
-          fullWidth={500}
+          fullWidth
         >
           送出
         </Button>

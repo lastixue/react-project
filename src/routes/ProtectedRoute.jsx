@@ -15,5 +15,5 @@ import { CounterContext } from "../Contexts/Contexts";
 export default function ProtectedRoute({element, path}){
   // const isLoggedIn = false;
   const {state} = useContext(CounterContext)
-  return state.loged?(<Route path={path} element={element}></Route>):(<Navigate to={"/"} /> )
+  return state.loged?(<Route path={path} element={element}></Route>):(<Navigate to={"/login"} /> )
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 // import PropTypes from "prop-types";
 // import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Tabs, Tab, Grid, Typography, Box } from "@material-ui/core";
@@ -7,6 +7,7 @@ import { AppBar, Tabs, Tab, Grid, Typography, Box } from "@material-ui/core";
 // import Grid from "@material-ui/core/Grid";
 // import Typography from "@material-ui/core/Typography";
 // import Box from "@material-ui/core/Box";
+import { useSessionStorage } from "../../hooks/useSessionStorage";
 import ImageLayout from "./ImageLayout";
 import Test from "./TimeImage";
 import { useStyles } from "./style/TimeLapse.style";
@@ -54,7 +55,7 @@ function LinkTab(props) {
 
 function TimeLapse() {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useSessionStorage("",0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

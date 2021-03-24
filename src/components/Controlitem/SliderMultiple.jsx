@@ -2,14 +2,13 @@ import React from "react";
 import { Slider } from "@material-ui/core";
 import { useStyles } from "./style/SliderItem.style";
 //範圍拉條組件
-function SliderMultiple({ handleChange, sliderVal, name }) {
+function SliderMultiple({ handleChange, sliderVal,...props }) {
   const classes = useStyles();
 
   return (
     <>
-      <div className={classes.slider}>
+      <div>
         <Slider
-          name={name}
           classes={{
             track: classes.slidertrack,
             thumb: classes.sliderthumb,
@@ -25,18 +24,12 @@ function SliderMultiple({ handleChange, sliderVal, name }) {
           aria-labelledby="range-slider"
           // aria-labelledby="discrete-slider"
           step={10}
+          {...props}
           // marks
         />
       </div>
       <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          margin: "1rem 0",
-          fontWeight: 500,
-          lineHeight: 0,
-        }}
+       className={classes.datalabel}
       >
         <div>{`最小值:${sliderVal[0]}%`}</div>
         <div>{`最大值:${sliderVal[1]}%`}</div>

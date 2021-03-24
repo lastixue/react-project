@@ -9,28 +9,25 @@ import {
   ListItem,
   ListItemText,
   ListItemIcon,
-  Collapse,
   Button,
-  Typography,
   Toolbar,
 } from "@material-ui/core";
 // import Alert from '@material-ui/lab/Alert';
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import MenuIcon from "@material-ui/icons/Menu";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useStyles } from "./style/SideDrawer.style";
 import { NavData } from "./NavData";
-import { useSessionStorage } from "./hooks/useSessionStorage";
+import { useSessionStorage } from "../../hooks/useSessionStorage";
 import { CounterContext } from "../../Contexts/Contexts";
-import { FormatAlignJustify } from "@material-ui/icons";
-
 function ResponsiveDrawer() {
+  const navigate = useNavigate();
   const { state, dispatch } = useContext(CounterContext);
-  function askPermission(evt) {
-    Notification.requestPermission().then(function (permission) {
-      //notificationButtonUpdate();
-    });
-  }
+  // function askPermission(evt) {
+  //   Notification.requestPermission().then(function (permission) {
+  //     //notificationButtonUpdate();
+  //   });
+  // }
   // function notificationButtonUpdate(){
   //   if (Notification.permission='granted'){
   //       document.getElementsByTagName('Button').disabled=true;
@@ -39,13 +36,16 @@ function ResponsiveDrawer() {
   //   }
   // }
   const classes = useStyles();
-  const [selectedIndex, setSelectedIndex] = useSessionStorage("", "/");
+  const [selectedIndex, setSelectedIndex] = useSessionStorage("test","/");
   const [mobileOpen, setMobileOpen] = useState(false);
   // const [alert,setAlert]=useState(true);
   //設置 selected 位置
-  // const handleListItemClick = (event, index) => {
-  //   setSelectedIndex(index);
-  // };
+  const handleClick = (e) => {
+    e.preventDefault();
+    setSelectedIndex("/");
+    dispatch({ type: "logout" });
+    navigate("/");
+  };
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
   };
@@ -64,7 +64,7 @@ function ResponsiveDrawer() {
         <div>
           <AssignmentIndIcon className={classes.icon} />
         </div>
-        <span style={{ dispaly: "flex", justifyContent: "center" }}>
+        <span style={{ justifyContent: "center" }}>
           <p>
             使用者名稱:<span>guest</span>
           </p>
@@ -73,41 +73,38 @@ function ResponsiveDrawer() {
           </p>
           <div>
             <Button className={classes.button}>修改密碼</Button>
-            <Button
-              className={classes.button}
-              onClick={() => dispatch({ type: "logout" })}
-            >
+            <Button className={classes.button} onClick={handleClick}>
               登出
             </Button>
           </div>
         </span>
       </aside>
-        <List className={classes.marginT}>
-          {Array.isArray(NavData) &&
-            NavData.map((item, index) => (
-              <ListItem
-                className={classes.marginT}
-                classes={{ selected: classes.selected }}
-                selected={selectedIndex === item.to}
-                component={Link}
-                to={item.to}
-                key={item.label}
-                onClick={(event) => handleListItemClick(event, item.to)}
-                button
-              >
-                <ListItemIcon className={classes.marginl}>
-                  {<item.icon />}
-                </ListItemIcon>
-                <ListItemText className={classes.center} primary={item.label} />
-              </ListItem>
-            ))}
-        </List>
+      <List className={classes.marginT}>
+        {Array.isArray(NavData) &&
+          NavData.map((item, index) => (
+            <ListItem
+              className={classes.marginT}
+              classes={{ selected: classes.selected }}
+              selected={selectedIndex === item.to}
+              component={Link}
+              to={item.to}
+              key={item.label}
+              onClick={(event) => handleListItemClick(event, item.to)}
+              button
+            >
+              <ListItemIcon className={classes.marginl}>
+                {<item.icon />}
+              </ListItemIcon>
+              <ListItemText className={classes.center} primary={item.label} />
+            </ListItem>
+          ))}
+      </List>
     </div>
   );
   return (
     <>
       {state.loged ? (
-        <div className={classes.root}>
+        <div>
           <CssBaseline />
           <Hidden mdUp>
             <AppBar position="fixed" className={classes.appBar}>

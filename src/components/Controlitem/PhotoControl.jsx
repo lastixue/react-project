@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from "react";
 import { Button, Typography } from "@material-ui/core";
 import Toggle from "./Toggle";
@@ -34,6 +35,7 @@ function PhotoControl() {
     <form style={{ textAlign: "center" }} onSubmit={handleSubmit}>
       <Typography variant="h5">拍照間隔調整</Typography>
       <Toggle
+        value={auto}
         Change={(e) => {
           setAuto(e.target.checked), setWarn(false);
         }}
@@ -55,9 +57,6 @@ function PhotoControl() {
         getminTime={(e) => {
           setMinTime(e.target.value), setWarn(false);
         }}
-        getmaxTime={(e) => {
-          setMaxTime(e.target.value), setWarn(false);
-        }}
         minTime={minTime}
         display="none"
         label="夜間時間"
@@ -65,7 +64,7 @@ function PhotoControl() {
 
       <div className={classes.center}>
         <Button
-          className={warn ? classes.button : classes.buttons}
+          className={warn ? classes.warnButton : classes.button}
           type="submit"
           variant="contained"
           size="large"

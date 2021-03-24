@@ -7,7 +7,6 @@ import { useStyles } from "./style/Login.style";
 
 function Login() {
   const classes = useStyles();
-
   return (
     <Grid container className={classes.root}>
       <Grid item xs={12} sm={12} md={10} lg={6}>

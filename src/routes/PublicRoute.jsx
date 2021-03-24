@@ -4,5 +4,6 @@ import { CounterContext } from "../Contexts/Contexts";
 export default function PublicRoute({...rest}){
   // const isLoggedIn = false;
   const {state} = useContext(CounterContext)
-  return state.loged?(null):(<Route {...rest} />)
+  return (state.loged?(null):(<Route {...rest} />))
+
 }

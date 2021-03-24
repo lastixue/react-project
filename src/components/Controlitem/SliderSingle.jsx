@@ -5,19 +5,15 @@ import { useStyles } from "./style/SliderItem.style";
 function SliderSingle({
   handleChange,
   SingelVal,
-  name,
-  min,
-  max,
-  step,
   label,
+  ...props
 }) {
   const classes = useStyles();
 
   return (
     <>
-      <div className={classes.slider}>
+      <div>
         <Slider
-          name={name}
           classes={{
             track: classes.slidertrack,
             thumb: classes.sliderthumb,
@@ -29,22 +25,13 @@ function SliderSingle({
           defaultValue={0}
           valueLabelDisplay="auto"
           aria-labelledby="discrete-slider"
+          {...props}
           // aria-labelledby="discrete-slider"
-          min={min}
-          max={max}
-          step={step}
           // marks
         />
       </div>
       <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          margin: "1rem 0",
-          fontWeight: 500,
-          lineHeight: 0,
-        }}
+       className={classes.datalabel}
       >
         <span>{`${SingelVal}${label}`}</span>
       </div>

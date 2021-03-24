@@ -5,7 +5,6 @@ import { useStyles } from "./style/DatepickerItem.style";
 function DatepickerItem({
   getminTime,
   getmaxTime,
-  name,
   minTime,
   maxTime,
   display,
@@ -16,12 +15,10 @@ function DatepickerItem({
     <div>
       <TextField
         className={classes.textField}
-        name={name}
         label={label}
         type="time"
         defaultValue={minTime}
         onChange={getminTime} //(e) => setMinDate(e.target.value)
-        
         InputLabelProps={{
           shrink: true,
         }}
@@ -29,11 +26,10 @@ function DatepickerItem({
 
       <TextField
         className={classes.textField}
-        name={name}
         style={{ display: display }}
         defaultValue={maxTime}
         onChange={getmaxTime} //(e) => setMaxDate(e.target.value)
-        label="結束時間"
+        label="終止時間"
         type="time"
         InputLabelProps={{
           shrink: true,

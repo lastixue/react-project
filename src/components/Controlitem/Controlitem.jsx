@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from "react";
 import { Button, Typography } from "@material-ui/core";
 import Toggle from "./Toggle";
@@ -26,10 +27,6 @@ function Controlitem() {
   function handleSubmit(e) {
     e.preventDefault();
     setWarn(true);
-    if (minTime > maxTime) {
-      alert("結束時間大於起始時間");
-      return;
-    }
     if (sliderVal[0] === sliderVal[1]) {
       alert("數值相同請重新輸入");
       return;
@@ -77,17 +74,15 @@ function Controlitem() {
         minTime={minTime}
         maxTime={maxTime}
         label="起始時間"
-        unit="%%"
       />
-
       <div className={classes.center}>
         <Button
-          className={warn ? classes.button : classes.buttons}
+          className={warn ? classes.warnButton : classes.button}
           type="submit"
           variant="contained"
           size="large"
           color="inherit"
-          fullWidth={500}
+          fullWidth
         >
           送出
         </Button>

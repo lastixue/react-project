@@ -7,7 +7,7 @@ import VideocamIcon from "@material-ui/icons/Videocam";
 export const NavData = [
   {
     label: "各項數據",
-    to: "Display",
+    to: "/",
     icon: AssignmentOutlinedIcon,
   },
   {

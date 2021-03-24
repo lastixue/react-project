@@ -6,17 +6,16 @@ import {
 } from "@material-ui/core";
 import { useStyles } from "./style/Toggle.style";
 //開關組件
-function Toggle({ Change, auto, name, label, value }) {
+function Toggle({ Change, auto, value, ...props }) {
   const classes = useStyles();
   return (
     <div>
       <FormControlLabel
-        labelPlacement="Start"
-        label={label}
+        label
+        labelPlacement="start"
         value={value}
         control={
           <Switch
-            name={name}
             classes={{
               switchBase: classes.switchBase,
               track: classes.track,
@@ -26,6 +25,7 @@ function Toggle({ Change, auto, name, label, value }) {
             onChange={Change}
           />
         }
+        {...props}
       />
       <Typography display="inline" className={classes.Typography}>
         {auto ? "開啟" : "關閉"}
