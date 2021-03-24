@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/core/styles";
-import LightGreen from "@material-ui/core/colors/LightGreen";
 const useStyles = makeStyles((theme) => ({
   rail: {
     opacity: 1,
@@ -21,5 +20,13 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 0,
   },
   checked: {},
+  datalabel: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    margin: "1rem 0",
+    fontWeight: 500,
+    lineHeight: 0,
+  },
 }));
 export { useStyles };

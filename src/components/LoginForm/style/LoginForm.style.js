@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme)=>({
   },
   textField:{
     margin:theme.spacing(6,0,6,0),
+    caretColor:"#81b29a",
     "& label.Mui-focused": {
         color: "#81b29a"
       },

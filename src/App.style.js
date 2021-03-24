@@ -8,5 +8,6 @@ export const useStyles = makeStyles(() => ({
     overflow: "auto",
     overflowX: "auto",
     backgroundColor: "#B3C6AC",
+    userSelect:"none"
   },
 }));

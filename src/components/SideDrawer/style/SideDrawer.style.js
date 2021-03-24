@@ -29,8 +29,12 @@ export const useStyles = makeStyles((theme) => ({
   drawerPaper: {
     width: drawerWidth,
   },
+
   selected: {
     borderLeft: "5px solid #529c89",
+    "&.Mui-selected":{
+      background:"white"
+    },
   },
   center: {
     textAlign: "center",
@@ -59,6 +63,10 @@ export const useStyles = makeStyles((theme) => ({
 
   },
   button: {
-    background:"#81B29A"
+    background:"#81B29A",
+    color:"#fefefe",
+    "&:hover": {
+      background:"#689C97"
+    }
   },
 }));
