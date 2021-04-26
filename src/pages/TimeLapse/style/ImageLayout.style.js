@@ -19,8 +19,9 @@ const useStyles = makeStyles((theme) => ({
     },
 
   },
-  icon: {
-    color: "rgba(255, 255, 255, 0.54)",
+  titleWrap:{
+    
+    color:"#303030"
   },
   appBar: {
     position: "relative",

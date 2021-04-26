@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React from "react";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -7,16 +7,12 @@ import DataCard from "../../components/CardItem/DataCard";
 import Bar from "../../components/Chart/BarChart";
 import { Grow } from "@material-ui/core";
 import { useStyles } from "./style/Display.style";
-import { useLocation,Navigate } from "react-router-dom";
-import { CounterContext } from "../../Contexts/Contexts";
+
 
 function Display() {
-  const location = useLocation();
-  const state = useContext(CounterContext)
   const classes = useStyles();
-  {state.loged&&location.pathname=="/"&&<Navigate to={"/Display"} />}
   return (
-    <Grid container spacing={3} className={classes.root}>
+    <Grid container spacing={4} className={classes.root}>
       <Grow in timeout={400}>
         <Grid item xs={12} sm={6} md={6} lg={3}>
           <Paper className={classes.paper}>

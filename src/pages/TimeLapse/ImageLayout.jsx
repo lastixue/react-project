@@ -47,7 +47,7 @@ function ImageLayout(props) {
                   objectFit: "contain",
                   cursor: "pointer",
                 }}
-                value={photos.id}
+                key={photos.id}
                 onClick={() => handleClickOpen(photos)}
                 src={photos.src}
                 alt={photos.date}
@@ -55,6 +55,10 @@ function ImageLayout(props) {
               />
 
               <GridListTileBar
+                style={{ background: "#fefefe"}}
+                classes={{
+                  titleWrap: classes.titleWrap,
+                }}
                 title={photos.date}
                 //subtitle={<span>by: {photos.author}</span>}
               />
@@ -75,9 +79,7 @@ function ImageLayout(props) {
             />
             <p style={{ textAlign: "right" }}>
               {selectedPhoto.title}
-              <span style={{ margin: "0 10px" }}>
-                {selectedPhoto.date}
-              </span>
+              <span style={{ margin: "0 10px" }}>{selectedPhoto.date}</span>
             </p>
           </>
         )}

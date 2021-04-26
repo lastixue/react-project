@@ -23,7 +23,7 @@ function CounterProvider(props) {
     localStorage.setItem("tests", JSON.stringify(state.loged));
   }, [state]);
   return (
-    <CounterContext.Provider value={{ state,dispatch,}}>
+    <CounterContext.Provider value={{ state,dispatch}}>
       {props.children}
     </CounterContext.Provider>
   );

@@ -32,8 +32,8 @@ export const useStyles = makeStyles((theme) => ({
 
   selected: {
     borderLeft: "5px solid #529c89",
-    "&.Mui-selected":{
-      background:"white"
+    "&.Mui-selected": {
+      background: "white",
     },
   },
   center: {
@@ -58,15 +58,19 @@ export const useStyles = makeStyles((theme) => ({
     position: "relative",
     top: "40px",
   },
- none: {
+  none: {
     display: "none",
-
   },
   button: {
-    background:"#81B29A",
-    color:"#fefefe",
+    color: "#303030",
+    borderRadius: "0px",
+    margin: "10px",
     "&:hover": {
-      background:"#689C97"
-    }
+      color: "#81b29a",
+    },
+    
   },
+  marginRL:{
+    margin: "10px",
+  }
 }));

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes } from "react-router-dom";
+import { BrowserRouter, Routes,HashRouter } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import ResponsiveDrawer from "./components/SideDrawer/SideDrawer";
 import ContorlForm from "./pages/ControlForm/ContorlForm";
@@ -13,6 +13,7 @@ import { CounterProvider } from "./Contexts/Contexts";
 import { useStyles } from "./App.style";
 function App() {
   const classes = useStyles();
+
   // const state = useContext(CounterContext)
   // const location = useLocation();
   // console.log(location.pathname);
@@ -20,10 +21,9 @@ function App() {
     <div className={classes.root}>
       <CssBaseline />
       <CounterProvider>
-        <BrowserRouter>
+        <HashRouter>
           <ResponsiveDrawer />
           <Routes>
-            
             <PublicRoute path="/login" element={<Login />} />
             {/* {state.loged&&location.pathname=="/"&&<Navigate to={"/Display"} />} */}
             <ProtectedRoute path="/" element={<Display />} />
@@ -40,7 +40,7 @@ function App() {
 
           {/* <Routes>
           </Routes>  */}
-        </BrowserRouter>
+        </HashRouter>
       </CounterProvider>
     </div>
   );

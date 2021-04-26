@@ -71,13 +71,14 @@ function ResponsiveDrawer() {
           <p>
             使用狀態:<span>online</span>
           </p>
-          <div>
-            <Button className={classes.button}>修改密碼</Button>
-            <Button className={classes.button} onClick={handleClick}>
+          </span>
+          <div className={classes.marginRL}>
+            <Button variant="outlined" className={classes.button}>修改密碼</Button>
+            <Button variant="outlined" className={classes.button} onClick={handleClick}>
               登出
             </Button>
           </div>
-        </span>
+
       </aside>
       <List className={classes.marginT}>
         {Array.isArray(NavData) &&
