@@ -6,7 +6,7 @@ import {
 } from "@material-ui/core";
 import { useStyles } from "./style/Toggle.style";
 //開關組件
-function Toggle({ Change, auto, value, ...props }) {
+function Toggle({ Change, auto, value,checked, ...props }) {
   const classes = useStyles();
   return (
     <div>
@@ -23,6 +23,7 @@ function Toggle({ Change, auto, value, ...props }) {
               thumb: classes.thumb,
             }}
             onChange={Change}
+            checked={checked}
           />
         }
         {...props}

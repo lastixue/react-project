@@ -11,13 +11,12 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import PublicRoute from "./routes/PublicRoute";
 import { CounterProvider } from "./Contexts/Contexts";
 import { useStyles } from "./App.style";
+import { QueryClient, QueryClientProvider} from "react-query";
 function App() {
+  const queryClient = new QueryClient()
   const classes = useStyles();
-
-  // const state = useContext(CounterContext)
-  // const location = useLocation();
-  // console.log(location.pathname);
   return (
+    <QueryClientProvider client={queryClient}>
     <div className={classes.root}>
       <CssBaseline />
       <CounterProvider>
@@ -25,24 +24,15 @@ function App() {
           <ResponsiveDrawer />
           <Routes>
             <PublicRoute path="/login" element={<Login />} />
-            {/* {state.loged&&location.pathname=="/"&&<Navigate to={"/Display"} />} */}
             <ProtectedRoute path="/" element={<Display />} />
             <ProtectedRoute path="/TimeLapse" element={<TimeLapse />} />
             <ProtectedRoute path="/AutoControl" element={<AutoControl />} />
             <ProtectedRoute path="/ContorlForm" element={<ContorlForm />} />
-            {/* <PrivateRoute  isAuth={true} path="/Display" component={Display}  redirectTo='/Display'/>
-          <PrivateRoute  isAuth={true} path="/TimeLapse" component={TimeLapse}  redirectTo='/TimeLapse'/>
-          <PrivateRoute  isAuth={true} path="/AutoControl" component={AutoControl}  redirectTo='/AutoControl'/>
-          <PrivateRoute  isAuth={true} path="/ContorlForm" component={ContorlForm}  redirectTo='/ContorlForm'/> */}
           </Routes>
-
-          {/* <Route path="/image" element={<ImageBox />} /> */}
-
-          {/* <Routes>
-          </Routes>  */}
         </HashRouter>
       </CounterProvider>
     </div>
+    </QueryClientProvider>
   );
 }
 export default App;

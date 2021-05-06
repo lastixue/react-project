@@ -9,6 +9,8 @@ function DatepickerItem({
   maxTime,
   display,
   label,
+  mindefault,
+  maxdefault
 }) {
   const classes = useStyles();
   return (
@@ -17,17 +19,18 @@ function DatepickerItem({
         className={classes.textField}
         label={label}
         type="time"
-        defaultValue={minTime}
+        value={minTime}
+        defaultValue={mindefault}
         onChange={getminTime} //(e) => setMinDate(e.target.value)
         InputLabelProps={{
           shrink: true,
         }}
       />
-
       <TextField
         className={classes.textField}
         style={{ display: display }}
-        defaultValue={maxTime}
+        value={maxTime}
+        defaultValue={maxdefault}
         onChange={getmaxTime} //(e) => setMaxDate(e.target.value)
         label="終止時間"
         type="time"
