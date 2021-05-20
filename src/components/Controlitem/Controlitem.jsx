@@ -46,15 +46,34 @@ function Controlitem() {
       sliderVal[1] -= 10;
     }
   }
+  // useEffect(() => {
+  //   window.addEventListener("unload", handleUnload);
+  //   return () => {
+  //     window.removeEventListener("unload", handleUnload);
+  //   };
+  // }, []);
+
+  // const handleUnload = (e) => {
+  //   mutation.mutate([
+  //     {
+  //       end: "18:32",
+  //       max: 50,
+  //       min: 10,
+  //       module: "light",
+  //       start: "07:34",
+  //     },
+  //   ]);
+  // };
+
   function handleSubmit(e) {
     e.preventDefault();
     setWarn(true);
     if (sliderVal[0] === sliderVal[1]) {
-        mutation.mutate([
-          {
-            null: null,
-          },
-        ]);
+      mutation.mutate([
+        {
+          null: null,
+        },
+      ]);
       // console.clear();
     } else {
       mutation.mutate([
@@ -67,7 +86,6 @@ function Controlitem() {
         },
       ]);
     }
-
     if (mutation.isSuccess || mutation.isError) {
       setOpen(true);
     }

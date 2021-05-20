@@ -2,11 +2,6 @@ import React,{useState} from "react";
 // import PropTypes from "prop-types";
 // import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Tabs, Tab, Grid, Typography, Box } from "@material-ui/core";
-// import Tabs from "@material-ui/core/Tabs";
-// import Tab from "@material-ui/core/Tab";
-// import Grid from "@material-ui/core/Grid";
-// import Typography from "@material-ui/core/Typography";
-// import Box from "@material-ui/core/Box";
 import { useSessionStorage } from "../../hooks/useSessionStorage";
 import ImageLayout from "./ImageLayout";
 import Test from "./TimeImage";
@@ -27,13 +22,6 @@ function TabPanel({ children, value, index, ...other }) {
     </Typography>
   );
 }
-
-// TabPanel.propTypes = {
-//   children: PropTypes.node,
-//   index: PropTypes.any.isRequired,
-//   value: PropTypes.any.isRequired
-// };
-
 function a11yProps(index) {
   return {
     id: index,

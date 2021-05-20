@@ -1,119 +1,168 @@
-// import React from "react";
-// import { Line } from "react-chartjs-2";
-
-// export default function Bar() {
-//   const data = {
-//     labels: ["M", "T", "W", "T", "F", "S", "S"],
-//     //backgroundColor: ['rgba(255,0,0,1)'],
-//     //lineTension: 1,
-//     datasets: [
-//       {
-//         label: "HSN",
-//         fill: false,
-//         borderColor: "#303030",
-//         borderWidth: 1,
-//         pointRadius: 2,
-//         data: [65, 59, 80, 81, 56, 55, 40],
-//       },
-//     ],
-//   };
-
-//   let options = {
-//     legend: {
-//       position: "right",
-//       labels: {
-//         boxWidth: 10,
-//       },
-//     },
-//     scales: {
-//       xAxes: [
-//         {
-//           ticks: { display: true },
-//         },
-//       ],
-//     },
-//   };
-
-//   return (
-//     <div>
-//       <Line data={data}
-// // @ts-ignore
-//       options={options} />
-//     </div>
-//   );
-// }
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import { useQuery } from "react-query";
-import { getHistory } from "../../../apitest/api";
+import { getHourHistory, getWeekHistory } from "../../../apitest/api";
 import moment from "moment";
-
-const start = moment(new Date()).format("YYYY-MM-DD-HH");
-const end = moment(+new Date() + 10 * 3600 * 1000).format("YYYY-MM-DD-HH");
 const options = [
-  { label: "last hour", value: "hour" },
-  { label: "last day", value: "day" },
-  { label: "last week", value: "week" },
+  { label: "Today", value: "day" },
+  { label: "This week", value: "week" },
 ];
-export default function Barchart() {
+export default function BarChart() {
+  const { data: historyHourData, status: historyHourStatus } = useQuery(
+    "hourHistory",
+    getHourHistory
+  );
+  const { data: historyWeekData, status: historyWeekStatus } = useQuery(
+    "weekHistory",
+    getWeekHistory
+  );
+  const historyWeekDatas =
+    historyWeekStatus === "success" &&
+    historyWeekData.logs.filter(
+      (datas) =>
+        parseInt(datas.timestamp.split(":")[1]) === 0 &&
+        parseInt(datas.timestamp.split("T")[1]) === 0
+    ); //last week
+  const historyHourDatas =
+    historyHourStatus === "success" &&
+    historyHourData.logs.filter(
+      (datas) => parseInt(datas.timestamp.split(":")[1]) === 0
+    ); //last day
+
   const defaultDate = options[0];
-  const defaultData = {};
-  const { data: historyData, status, error } = useQuery("history", getHistory);
+  const [defaultData, setDefaultData] = useState({});
   const [date, setDate] = useState(defaultDate.value);
   const [chartData, setChartData] = useState(defaultData);
-  const [lux, setLux] = useState({});
-  // console.log(status === "success" && historyData);
-  // const rest = status === "success" &&　historyData.filter((v)=>v.logs.timestamp>start);
-  // const tests = status==="success"&&historyData.logs.filter(v => moment(v.timestamp).format("YYYY-MM-DD-HH")>=start)
-  // console.log(tests);
-  function addHourif(acc, cv) {
-    const prevtime = status === "success" && new Date(acc.slice(-1)[0].logs.timestamp).getTime();
-    const cvtime = status === "success" && new Date(cv.logs.timestamp).getTime();
-    if (cvtime >= prevtime + 60 * 60 * 1000) return [...acc, cv];
-    else return acc;
-  }
-  {
-    status === "success" &&
-      console.log(historyData.logs.reduce(addHourif, historyData[0]));
-  }
-  const handleChange = (value) => {
-    const date = value.value;
-    setDate(date);
-  };
-
-  useEffect(() => {
-    getDataFromDate(date).then((chartData) => {
-      setChartData(chartData);
-    });
-  }, [date]);
-  // console.log(item.logs[0])
   function requestApi(date) {
-    // console.log(chartData);
-    const labels = [9876, 4245, 2345, 3452, 6534, 132132];
     let result;
     switch (date) {
-      case "hour":
+      case "day":
         result = {
-          labels,
+          labels:
+            historyHourStatus === "success" &&
+            historyHourDatas.map((v) =>
+              moment(v.timestamp).format("YYYY-MM-DD-HH")
+            ),
+          // labels: [1, 2, 3, 4, 5],
           datasets: [
             {
-              label: "Agent performance",
-              // data: [status === "success" && historyData.logs[0].tankfluid],
-              data: [9876, 4245, 2345, 3452, 6534, 132132],
-              borderWidth: 2,
+              label: "土壤濕度",
+              data:
+                historyHourStatus === "success" &&
+                historyHourDatas.map((v) => v.moisture),
+              // data: [1, 2, 3, 4, 5],
+              borderWidth: 7,
+              backgroundColor: "#9BCFB8",
+              borderColor: "#9BCFB8",
+              pointHoverBackgroundColor: "#fefefe",
+              pointBorderColor: "#9BCFB8",
+              pointBackgroundColor: "#fff",
+              pointBorderWidth: 2,
+              pointHoverRadius: 5,
+              pointHoverBorderWidth: 2,
+              pointRadius: 7,
+              pointHitRadius: 10,
+              fill: false,
+            },
+            {
+              label: "光照程度",
+              data:
+                historyHourStatus === "success" &&
+                historyHourDatas.map((v) => v.lux),
+              // data: [1, 2, 3, 4, 5],
+              borderWidth: 7,
+              backgroundColor: "#bfbb5e",
+              borderColor: "#bfbb5e",
+              pointBorderColor: "#bfbb5e",
+              pointBackgroundColor: "#fff",
+              pointBorderWidth: 2,
+              pointHoverRadius: 5,
+              pointHoverBorderWidth: 2,
+              pointRadius: 7,
+              pointHitRadius: 10,
+              fill: false,
+            },
+            {
+              label: "水箱容量",
+              data:
+                historyHourStatus === "success" &&
+                historyHourDatas.map((v) => v.tankfluid),
+              // data:[1,2,3,4,5],
+              borderWidth: 7,
+              backgroundColor: "#85B8CB",
+              borderColor: "#85B8CB",
+              pointBorderColor: "#85B8CB",
+              pointBackgroundColor: "#fff",
+              pointBorderWidth: 2,
+              pointHoverRadius: 5,
+              pointHoverBorderWidth: 2,
+              pointRadius: 7,
+              pointHitRadius: 10,
+              fill: false,
             },
           ],
         };
         break;
-      case "day":
+      case "week":
         result = {
-          labels,
+          labels:
+            historyWeekStatus === "success" &&
+            historyWeekDatas.map((v) =>
+              moment(v.timestamp).format("YYYY-MM-DD")
+            ),
           datasets: [
             {
-              label: "Agent performance",
-              data: [3454, 4555, 4554, 5454, 4542, 6543, 3445, 4567],
-              borderWidth: 2,
+              label: "土壤濕度",
+              data:
+                historyWeekStatus === "success" &&
+                historyWeekDatas.map((v) => v.moisture),
+              borderWidth: 7,
+              backgroundColor: "#9BCFB8",
+              borderColor: "#9BCFB8",
+              pointHoverBackgroundColor: "#fefefe",
+              pointBorderColor: "#9BCFB8",
+              pointBackgroundColor: "#fff",
+              pointBorderWidth: 2,
+              pointHoverRadius: 5,
+              pointHoverBorderWidth: 2,
+              pointRadius: 7,
+              pointHitRadius: 10,
+              fill: false,
+            },
+            {
+              label: "光照程度",
+              data:
+                historyWeekStatus === "success" &&
+                historyWeekDatas.map((v) => v.lux),
+              borderWidth: 7,
+              backgroundColor: "#bfbb5e",
+              borderColor: "#bfbb5e",
+              pointBorderColor: "#bfbb5e",
+              pointBackgroundColor: "#fff",
+              pointBorderWidth: 2,
+              pointHoverRadius: 5,
+              pointHoverBorderWidth: 2,
+              pointRadius: 7,
+              pointHitRadius: 10,
+              fill: false,
+            },
+            {
+              label: "水箱容量",
+              data:
+                historyWeekStatus === "success" &&
+                historyWeekDatas.map((v) => v.tankfluid),
+              borderWidth: 7,
+              backgroundColor: "#85B8CB",
+              borderColor: "#85B8CB",
+              pointBorderColor: "#85B8CB",
+              pointBackgroundColor: "#fff",
+              pointBorderWidth: 2,
+              pointHoverRadius: 5,
+              pointHoverBorderWidth: 2,
+              pointRadius: 7,
+              pointHitRadius: 10,
+              fill: false,
             },
           ],
         };
@@ -123,39 +172,43 @@ export default function Barchart() {
     }
     return Promise.resolve(result);
   }
-
+  const handleChange = (value) => {
+    const date = value.value;
+    setDate(date);
+  };
   function getDataFromDate(date) {
     return requestApi(date);
   }
+  useEffect(() => {
+    const getTest = async () => {
+      await getDataFromDate(date).then((chartData) => {
+        setChartData(chartData);
+      });
+    };
+    getTest();
+  }, [date,historyWeekData,historyHourData]);
   return (
-    <div className="card-one">
-      <span className="dropdown-select">
-        <Select
-          options={options}
-          defaultValue={defaultDate}
-          onChange={handleChange}
-        />
-      </span>
-      <Bar
+    <>
+      <Select
+        options={options}
+        defaultValue={defaultDate}
+        onChange={handleChange}
+      />
+      <Line
         data={chartData}
         options={{
           responsive: true,
           scales: {
             yAxes: [
               {
-                ticks: {
-                  beginAtZero: true,
-                },
+                type: "linear",
+                position: "left",
               },
             ],
-          },
-          legend: {
-            display: true,
-            position: "bottom",
           },
         }}
         height={140}
       />
-    </div>
+    </>
   );
 }

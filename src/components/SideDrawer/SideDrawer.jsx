@@ -38,6 +38,7 @@ function ResponsiveDrawer() {
   const classes = useStyles();
   const [selectedIndex, setSelectedIndex] = useSessionStorage("test","/");
   const [mobileOpen, setMobileOpen] = useState(false);
+  const num = 1;
   // const [alert,setAlert]=useState(true);
   //設置 selected 位置
   const handleClick = (e) => {
@@ -60,7 +61,8 @@ function ResponsiveDrawer() {
       {/* <Collapse in={alert}>
       <Alert severity="error" onClose={()=>{setAlert(false)}}>This is an error alert — check it out!</Alert>
       </Collapse> */}
-      <aside className={state.loged ? classes.aside : classes.none}>
+
+      {/* 登入資訊 <aside className={state.loged ? classes.aside : classes.none}>
         <div>
           <AssignmentIndIcon className={classes.icon} />
         </div>
@@ -78,9 +80,9 @@ function ResponsiveDrawer() {
               登出
             </Button>
           </div>
-
-      </aside>
+      </aside> */}
       <List className={classes.marginT}>
+
         {Array.isArray(NavData) &&
           NavData.map((item, index) => (
             <ListItem

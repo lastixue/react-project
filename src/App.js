@@ -23,7 +23,7 @@ function App() {
         <HashRouter>
           <ResponsiveDrawer />
           <Routes>
-            <PublicRoute path="/login" element={<Login />} />
+            {/* <PublicRoute path="/login" element={<Login />} /> */}
             <ProtectedRoute path="/" element={<Display />} />
             <ProtectedRoute path="/TimeLapse" element={<TimeLapse />} />
             <ProtectedRoute path="/AutoControl" element={<AutoControl />} />

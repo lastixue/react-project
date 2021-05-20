@@ -25,9 +25,9 @@ export const useStyles = makeStyles((theme) => ({
     background: "#EEFFE8",
   },
   box: {
-    [theme.breakpoints.only("xs")]: {
-      width: "350px",
-    },
+    // [theme.breakpoints.only("xs")]: {
+    //   width: "350px",
+    // },
     background: "#EEFFE8",
     margin: "0,25px",
     padding: "25px",

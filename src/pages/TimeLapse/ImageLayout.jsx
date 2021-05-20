@@ -51,7 +51,7 @@ function ImageLayout(props) {
                 }}
                 key={photo.id}
                 onClick={() => handleClickOpen(photo)}
-                src={photo.filename}
+                src={`/api/photos/${photo.filename}`}
                 alt={photo.timestamp}
                 effect="opacity"
               />
@@ -76,7 +76,7 @@ function ImageLayout(props) {
             <img
               onClick={handleClose}
               style={{ height: "100vh", width: "100vw", cursor: "pointer" }}
-              src={selectedPhoto.filename}
+              src={`/api/photos/${selectedPhoto.filename}`}
               alt={selectedPhoto.timestamp}
             />
             <p style={{ textAlign: "right" }}>

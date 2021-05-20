@@ -3,20 +3,14 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import CircleProgress from "../../components/CardItem/CircleProgress";
-import Bar from "../../components/Chart/BarChart";
+import BarChart from "../../components/Chart/BarChart";
 import { Grow } from "@material-ui/core";
 import { useQuery } from "react-query";
-import { getStatus, getHistory } from "../../../apitest/api";
+import { getStatus } from "../../../apitest/api";
 import { useStyles } from "./style/Display.style";
-import moment from "moment";
+
 function Display() {
   const { data, status, error } = useQuery("status", getStatus);
-  const {
-    data: history,
-    status: historyStatus,
-    error: historyError,
-  } = useQuery("history", getHistory);
-
   const classes = useStyles();
   {
     error && console.error("data is not fetch");
@@ -57,27 +51,14 @@ function Display() {
           </Grow>
         </>
       )}
-      <Grow in timeout={2000}>
-        <Grid className={classes.center} item xs={12} sm={12} md={12} lg={6}>
+      <Grow in timeout={5000}>
+        <Grid className={classes.center} item xs={12} sm={12} md={12} lg={12}>
           <Box className={classes.box}>
-            <Bar />
+            <BarChart />
           </Box>
         </Grid>
       </Grow>
-      <Grow in timeout={2000}>
-        <Grid className={classes.center} item xs={12} sm={12} md={12} lg={6}>
-          <Box className={classes.box}>
-            <Bar />
-          </Box>
-        </Grid>
-      </Grow>
-      <Grow in timeout={2000}>
-        <Grid className={classes.center} item xs={12} sm={12} md={12} lg={6}>
-          <Box className={classes.box}>
-            <Bar />
-          </Box>
-        </Grid>
-      </Grow>
+    
     </Grid>
   );
 }

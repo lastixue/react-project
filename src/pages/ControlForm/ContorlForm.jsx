@@ -11,12 +11,12 @@ function ContorlForm() {
     <Grid container className={classes.root}>
       <Grid item xs={12} sm={12} md={12} lg={6}>
         <Paper className={classes.paper}>
-          <Manual tname="土壤濕度" />
+          <Manual tname="土壤濕度" module="sprinklers"/>
         </Paper>
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={6}>
         <Paper className={classes.paper}>
-          <Manual tname="光照程度" />
+          <Manual tname="光照程度" module="light" />
         </Paper>
       </Grid>
     </Grid>
