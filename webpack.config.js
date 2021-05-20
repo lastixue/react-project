@@ -29,14 +29,13 @@ module.exports = {
   output: {
     path:path.resolve(__dirname, './dist'),
     filename: 'bundle.js',
-    publicPath:'/'
+    //publicPath:'/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: './dist/index.html'
    })
- 
   ],
   performance: { hints: false },
   devServer: {
