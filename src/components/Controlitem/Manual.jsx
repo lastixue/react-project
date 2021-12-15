@@ -2,43 +2,59 @@ import React, { useState, useEffect } from "react";
 import Toggle from "./Toggle";
 import { Typography } from "@material-ui/core";
 import { useQuery } from "react-query";
-import { getManual } from "../../../apitest/api";
+import { api, getManual } from "../../../apitest/api";
+
 //手動操作表單
 function Manual({ tname, module }) {
-  const [auto, setAuto] = useState(true);
-  const [statuss, setStatuss] = useState(0);
+  const [auto, setAuto] = useState(false);
+  //const [statuss, setStatuss] = useState(false);
   let modules = { module };
-  const { data, status, error } = useQuery(
-    ["manual", modules, statuss],
-    getManual
-  );
-  {
-    status === "success" && console.log(data);
-  }
-  useEffect(() => {
-    if (auto) {
-      setStatuss(1);
-    } else {
-      setStatuss(0);
-    }
-  }, [auto]);
+  // const { data, status, error } = useQuery(
+  //   ["manual", modules, +statuss],
+  //   getManual
+  // );
+  // {
+  //   status === "success" && console.log(data);
+  // }
+  // useEffect(() => {
+  //   if (auto) {
+  //     setStatuss(true);
+  //   } else {
+  //     setStatuss(false);
+  //   }
+  // }, [auto]);
 
   useEffect(() => {
+
     window.addEventListener("beforeunload", handleUnload);
     return () => {
       window.removeEventListener("beforeunload", handleUnload);
     };
   }, []);
+
+  useEffect(() => {
+    api.get(`/api/${module}?ison=${+auto}`)
+    api.interceptors.request.use(
+      function (config) {
+        // Do something before request is sent
+        return config;
+      },
+      function (error) {
+        // Do something with request error
+        return Promise.reject(error);
+      }
+    );
+  },[module, auto])
+
   const handleUnload = (e) => {
     e.preventDefault();
     module = "module";
-    setStatuss(0);
+    setAuto(false);
   };
   const handleChange = async (e) => {
     setAuto(e.target.checked);
+    
   };
-
-  console.log(statuss);
   return (
     <form style={{ justifyContent: "center" }} onSubmit={handleChange}>
       <Typography variant="h5">{tname}</Typography>
@@ -50,7 +66,7 @@ function Manual({ tname, module }) {
         auto={auto}
         checked={auto}
       />
-      {console.log(statuss)}
+      {/* {console.log(statuss)} */}
       {/* <button type="submit">test</button> */}
     </form>
   );

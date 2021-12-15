@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes,HashRouter } from "react-router-dom";
+import { BrowserRouter, Routes,HashRouter, Route } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import ResponsiveDrawer from "./components/SideDrawer/SideDrawer";
 import ContorlForm from "./pages/ControlForm/ContorlForm";
@@ -24,10 +24,10 @@ function App() {
           <ResponsiveDrawer />
           <Routes>
             {/* <PublicRoute path="/login" element={<Login />} /> */}
-            <ProtectedRoute path="/" element={<Display />} />
-            <ProtectedRoute path="/TimeLapse" element={<TimeLapse />} />
-            <ProtectedRoute path="/AutoControl" element={<AutoControl />} />
-            <ProtectedRoute path="/ContorlForm" element={<ContorlForm />} />
+            <Route path="/" element={<Display />} />
+            <Route path="/TimeLapse" element={<TimeLapse />} />
+            <Route path="/AutoControl" element={<AutoControl />} />
+            <Route path="/ContorlForm" element={<ContorlForm />} />
           </Routes>
         </HashRouter>
       </CounterProvider>

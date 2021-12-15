@@ -34,6 +34,7 @@ export default function BarChart() {
   const [defaultData, setDefaultData] = useState({});
   const [date, setDate] = useState(defaultDate.value);
   const [chartData, setChartData] = useState(defaultData);
+
   function requestApi(date) {
     let result;
     switch (date) {
@@ -50,7 +51,7 @@ export default function BarChart() {
               label: "土壤濕度",
               data:
                 historyHourStatus === "success" &&
-                historyHourDatas.map((v) => v.moisture),
+                historyHourDatas.map((v) => v?.moisture),
               // data: [1, 2, 3, 4, 5],
               borderWidth: 7,
               backgroundColor: "#9BCFB8",
@@ -69,7 +70,7 @@ export default function BarChart() {
               label: "光照程度",
               data:
                 historyHourStatus === "success" &&
-                historyHourDatas.map((v) => v.lux),
+                historyHourDatas.map((v) => v?.lux),
               // data: [1, 2, 3, 4, 5],
               borderWidth: 7,
               backgroundColor: "#bfbb5e",
@@ -87,7 +88,7 @@ export default function BarChart() {
               label: "水箱容量",
               data:
                 historyHourStatus === "success" &&
-                historyHourDatas.map((v) => v.tankfluid),
+                historyHourDatas.map((v) => v?.tankfluid),
               // data:[1,2,3,4,5],
               borderWidth: 7,
               backgroundColor: "#85B8CB",
@@ -109,14 +110,14 @@ export default function BarChart() {
           labels:
             historyWeekStatus === "success" &&
             historyWeekDatas.map((v) =>
-              moment(v.timestamp).format("YYYY-MM-DD")
+              moment(v?.timestamp).format("YYYY-MM-DD")
             ),
           datasets: [
             {
               label: "土壤濕度",
               data:
                 historyWeekStatus === "success" &&
-                historyWeekDatas.map((v) => v.moisture),
+                historyWeekDatas.map((v) => v?.moisture),
               borderWidth: 7,
               backgroundColor: "#9BCFB8",
               borderColor: "#9BCFB8",
@@ -134,7 +135,7 @@ export default function BarChart() {
               label: "光照程度",
               data:
                 historyWeekStatus === "success" &&
-                historyWeekDatas.map((v) => v.lux),
+                historyWeekDatas.map((v) => v?.lux),
               borderWidth: 7,
               backgroundColor: "#bfbb5e",
               borderColor: "#bfbb5e",
@@ -151,7 +152,7 @@ export default function BarChart() {
               label: "水箱容量",
               data:
                 historyWeekStatus === "success" &&
-                historyWeekDatas.map((v) => v.tankfluid),
+                historyWeekDatas.map((v) => v?.tankfluid),
               borderWidth: 7,
               backgroundColor: "#85B8CB",
               borderColor: "#85B8CB",

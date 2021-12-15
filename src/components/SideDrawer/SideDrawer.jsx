@@ -106,7 +106,6 @@ function ResponsiveDrawer() {
   );
   return (
     <>
-      {state.loged ? (
         <div>
           <CssBaseline />
           <Hidden mdUp>
@@ -154,7 +153,6 @@ function ResponsiveDrawer() {
             </Hidden>
           </nav>
         </div>
-      ) : null}
     </>
   );
 }

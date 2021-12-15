@@ -27,7 +27,7 @@ function Display() {
               <Paper className={classes.paper}>
                 <CircleProgress
                   title="土壤濕度"
-                  value={data.logs[0].moisture}
+                  value={data.logs[0]?.moisture || 0}
                 />
               </Paper>
             </Grid>
@@ -35,7 +35,7 @@ function Display() {
           <Grow in timeout={800}>
             <Grid item xs={12} sm={4} md={4} lg={4}>
               <Paper className={classes.paper}>
-                <CircleProgress title="光照程度" value={data.logs[0].lux} />
+                <CircleProgress title="光照程度" value={data.logs[0]?.lux || 0} />
               </Paper>
             </Grid>
           </Grow>
@@ -44,7 +44,7 @@ function Display() {
               <Paper className={classes.paper}>
                 <CircleProgress
                   title="水箱水位"
-                  value={data.logs[0].tankfluid}
+                  value={data.logs[0]?.tankfluid || 0}
                 />
               </Paper>
             </Grid>

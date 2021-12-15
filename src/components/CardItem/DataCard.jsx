@@ -19,8 +19,8 @@ function DataCard() {
   }, []);
   return (
     <ul>
-        <li style={{listStyle:'none'}}key={data.name}>
-          <p>{Object.keys(data)[0]}:{data.name}</p>
+        <li style={{listStyle:'none'}}key={data?.name}>
+          <p>{Object.keys(data)[0]}:{data?.name}</p>
         </li>
     </ul>
   );
