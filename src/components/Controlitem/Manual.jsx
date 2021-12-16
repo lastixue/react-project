@@ -33,7 +33,7 @@ function Manual({ tname, module }) {
   }, []);
 
   useEffect(() => {
-    api.get(`/api/${module}?ison=${+auto}`)
+    api.get(`/api/manual/${module}?op=${+auto}`)
     api.interceptors.request.use(
       function (config) {
         // Do something before request is sent

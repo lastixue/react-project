@@ -10,12 +10,12 @@ function DataCard() {
   //   });
   // }, []);
   useEffect(() => {
-    async function getData() {
-      //因為url被註解所以會出錯
-      const result = await axios.get('http://127.0.0.1:5000/api');
-      setData(result.data);
-    }
-    getData();
+    // async function getData() {
+    //   //因為url被註解所以會出錯
+    //   const result = await axios.get('http://127.0.0.1:5000/api');
+    //   setData(result.data);
+    // }
+    // getData();
   }, []);
   return (
     <ul>

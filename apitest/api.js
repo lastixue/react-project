@@ -1,7 +1,7 @@
 import axios from "axios";
 import moment from "moment";
 export const api = axios.create({
-  baseURL: "http://127.0.0.1:8080",
+  baseURL: window.location.origin,
 });
 // + 10 * 3600 * 1000
 const start =  moment(new Date()).subtract(24, 'hours').utc().format("YYYY-MM-DD-HH")

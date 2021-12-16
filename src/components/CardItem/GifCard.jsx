@@ -8,7 +8,7 @@ export default function GifCard() {
       {status === "success" && (
         <img
           style={{ width: "80vw", minHeight: "80vh" }}
-          src={data.gifs[0].filename}
+          src={`/static/gif/${data.gifs[0].filename}`}
         ></img>
       )}
     </div>
